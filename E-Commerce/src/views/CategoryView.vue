@@ -1,6 +1,6 @@
 <template>
     <div class="w-screen">
-      <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow">
+      <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow z-10">
         <div class="logo flex flex-column">
           <h1 class="font-jolly font-black text-3xl ml-12">
             <span class="after:content-['M'] after:text-orange-600">Style</span>ingle
@@ -36,38 +36,199 @@
         </div>
       </nav>
 
-        <section class="h-[700px]">
+        <section>
             <div>
-              <div class="flex p-12">
-                <a href="">Home</a>
-                <span>></span>
-                <a href="">Categories</a>
-              </div>
-              <div class="text-center">
-                <h1>Categories</h1>
-              </div>
               <div class="grid grid-cols-[0.2fr,1fr]">
-                <div class="border-2 border-gray-300 text-center">
-                  <h3>Categories</h3>
-                  <div>
-                    <p>Dress</p>
-                    <p>Skirt</p>
-                    <p>Bikini</p>
-                    <p>Jeans</p>
-                    <p>Pants</p>
-                    <p>Trousers</p>
-                    <p>Crop top</p>
-                    <p></p>
+                <div class="border-2 border-gray-300 text-start">
+                  <p class="font-semibold text-xl mt-5 ml-4">Category</p>
+                  <div class="flex justify-center mb-5">
+                    <div class="flex flex-col text-start">
+                      <a v-for="(item, index) in items" :key="index" :class="{ 'text-orange-600': selectedItem === index }" @click="selectItem(index)">
+                        {{ item }}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="w-[90%] h-px bg-gray-300 m-2"></div>
+
+                  <p class="font-semibold text-xl mt-5 ml-4">Filter by:</p>
+                  <p class="text-lg mt-4 ml-4">Type</p>
+                  <div class="flex justify-center mb-5">
+                    <div class="text-start">
+                      <p>Office</p>
+                      <p>Party</p>
+                      <p>Outdoor</p>
+                    </div>
+                  </div>
+
+                  <p class="text-lg mt-4 ml-4">Looks</p>
+                  <div class="flex justify-center mb-5">
+                    <div class="text-start">
+                      <p>Swag</p>
+                      <p>Casual</p>
+                      <p>Sweatshirt</p>
+                      <p>Office</p>
+                    </div>
                   </div>
                 </div>
 
-                <div> 
-                  <div class="relative flex">
-                    <div class="relative z-10">
-                      <h2>All Product</h2>
-                      <p>The center of women trending clothes in the world</p>
+                <div>
+                  <div class="">
+                    <div class="h-[40px] w-[35%] border-solid border-orange-600 border-2 rounded-full flex items-center justify-between m-5"> 
+                      <div class="flex justify-center items-center px-2">
+                        <img src="@/assets/images/search.png" alt="search icon" class="w-[25px] h-[25px]">
+                        <p class="text-left text-gray-400 py-8 px-4 text-xl">Search more product</p>
+                      </div>
+                      <button class=" bg-orange-600 w-[80px] h-[30px] rounded-full text-white m-2">Search</button>
                     </div>
-                   
+                  </div> 
+
+                  <div class="w-[100%] h-px bg-gray-300 my-8"></div>
+
+                  <div class="flex p-5">
+                    <a href="">Home</a>
+                    <span class="mx-2">></span>
+                    <a href="" class="text-[#6e6d6d]">Category</a>
+                    <span class="mx-2">></span>
+                    <a href="" class="text-[#6e6d6d]">Office suit</a>
+                  </div>
+
+                  <div class="p-5">
+                    <p class="text-4xl font-semibold">Office suit</p>
+                  </div>
+
+                  <div class="grid grid-cols-3 px-24">
+                    <div class="w-[300px] h-[370px] relative parent-container border-2 rounded-2xl m-3">
+                      <img src="@/assets/images/suit11.jpg" alt="" class="object-cover w-[300px] h-[250px] rounded-t-2xl">
+                      <div class="absolute flex justify-between w-[260px] top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <p class="bg-orange-100 h-[30px] w-[50px] py-1 text-center text-sm text-orange-600 rounded-lg">NEW</p>
+                        <div>
+                          <img src="https://www.transparentpng.com/thumb/instagram-heart/OtpLVC-heart-shaped-instagram-transparent-image.png" alt="" class="w-[30px]">
+                        </div>
+                      </div>
+                      <div class="p-4">
+                        <p class="font-bold">aslfjsafdsf</p>
+                        <div class="flex justify-between items-center">
+                          <div class="mt-4">
+                            <p class="text-sm text-[#6d6d6d]">Price:</p>
+                            <p>$200</p>
+                          </div>
+                          <button class="bg-orange-600 p-1.5 h-[30px] w-[35px] rounded-lg">
+                            <img src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="" class="w-[20px]">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-[300px] h-[370px] relative parent-container border-2 rounded-2xl m-3">
+                      <img src="@/assets/images/suit22.jpg" alt="" class="object-cover w-[300px] h-[250px] rounded-t-2xl">
+                      <div class="absolute flex justify-between w-[260px] top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <p class="bg-orange-100 h-[30px] w-[50px] py-1 text-center text-sm text-orange-600 rounded-lg">NEW</p>
+                        <div>
+                          <img src="https://www.transparentpng.com/thumb/instagram-heart/OtpLVC-heart-shaped-instagram-transparent-image.png" alt="" class="w-[30px]">
+                        </div>
+                      </div>
+                      <div class="p-4">
+                        <p class="font-bold">aslfjsafdsf</p>
+                        <div class="flex justify-between items-center">
+                          <div class="mt-4">
+                            <p class="text-sm text-[#6d6d6d]">Price:</p>
+                            <p>$200</p>
+                          </div>
+                          <button class="bg-orange-600 p-1.5 h-[30px] w-[35px] rounded-lg">
+                            <img src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="" class="w-[20px]">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-[300px] h-[370px] relative parent-container border-2 rounded-2xl m-3">
+                      <img src="@/assets/images/suit33.jpg" alt="" class="object-cover w-[300px] h-[250px] rounded-t-2xl">
+                      <div class="absolute flex justify-between w-[260px] top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <p class=" h-[30px] w-[50px] py-1 text-center text-sm text-orange-600 rounded-lg"></p>
+                        <div>
+                          <img src="https://www.transparentpng.com/thumb/instagram-heart/OtpLVC-heart-shaped-instagram-transparent-image.png" alt="" class="w-[30px]">
+                        </div>
+                      </div>
+                      <div class="p-4">
+                        <p class="font-bold">aslfjsafdsf</p>
+                        <div class="flex justify-between items-center">
+                          <div class="mt-4">
+                            <p class="text-sm text-[#6d6d6d]">Price:</p>
+                            <p>$200</p>
+                          </div>
+                          <button class="bg-orange-600 p-1.5 h-[30px] w-[35px] rounded-lg">
+                            <img src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="" class="w-[20px]">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-[300px] h-[370px] relative parent-container border-2 rounded-2xl m-3">
+                      <img src="@/assets/images/suit44.jpg" alt="" class="object-cover w-[300px] h-[250px] rounded-t-2xl">
+                      <div class="absolute flex justify-between w-[260px] top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <p class="bg-orange-100 h-[30px] w-[50px] py-1 text-center text-sm text-orange-600 rounded-lg">NEW</p>
+                        <div>
+                          <img src="https://www.transparentpng.com/thumb/instagram-heart/OtpLVC-heart-shaped-instagram-transparent-image.png" alt="" class="w-[30px]">
+                        </div>
+                      </div>
+                      <div class="p-4">
+                        <p class="font-bold">aslfjsafdsf</p>
+                        <div class="flex justify-between items-center">
+                          <div class="mt-4">
+                            <p class="text-sm text-[#6d6d6d]">Price:</p>
+                            <p>$200</p>
+                          </div>
+                          <button class="bg-orange-600 p-1.5 h-[30px] w-[35px] rounded-lg">
+                            <img src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="" class="w-[20px]">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-[300px] h-[370px] relative parent-container border-2 rounded-2xl m-3">
+                      <img src="@/assets/images/suit55.jpg" alt="" class="object-cover w-[300px] h-[250px] rounded-t-2xl">
+                      <div class="absolute flex justify-between w-[260px] top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <p class=" h-[30px] w-[50px] py-1 text-center text-sm text-orange-600 rounded-lg"></p>
+                        <div>
+                          <img src="https://www.transparentpng.com/thumb/instagram-heart/OtpLVC-heart-shaped-instagram-transparent-image.png" alt="" class="w-[30px]">
+                        </div>
+                      </div>
+                      <div class="p-4">
+                        <p class="font-bold">aslfjsafdsf</p>
+                        <div class="flex justify-between items-center">
+                          <div class="mt-4">
+                            <p class="text-sm text-[#6d6d6d]">Price:</p>
+                            <p>$200</p>
+                          </div>
+                          <button class="bg-orange-600 p-1.5 h-[30px] w-[35px] rounded-lg">
+                            <img src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="" class="w-[20px]">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-[300px] h-[370px] relative parent-container border-2 rounded-2xl m-3">
+                      <img src="@/assets/images/suit66.jpg" alt="" class="object-cover w-[300px] h-[250px] rounded-t-2xl">
+                      <div class="absolute flex justify-between w-[260px] top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <p class="h-[30px] w-[50px] py-1 text-center text-sm text-orange-600 rounded-lg"></p>
+                        <div>
+                          <img src="https://www.transparentpng.com/thumb/instagram-heart/OtpLVC-heart-shaped-instagram-transparent-image.png" alt="" class="w-[30px]">
+                        </div>
+                      </div>
+                      <div class="p-4">
+                        <p class="font-bold">aslfjsafdsf</p>
+                        <div class="flex justify-between items-center">
+                          <div class="mt-4">
+                            <p class="text-sm text-[#6d6d6d]">Price:</p>
+                            <p>$200</p>
+                          </div>
+                          <button class="bg-orange-600 p-1.5 h-[30px] w-[35px] rounded-lg">
+                            <img src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg" alt="" class="w-[20px]">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -140,7 +301,6 @@
 <script>
 
 export default {
-  //click nav change color 
   data() {
     return {
       links: [
@@ -149,7 +309,9 @@ export default {
         { text: "Category", clicked: true },
         { text: 'About us', clicked: false },
         { text: 'Contact us', clicked: false },
-      ]
+      ],
+      items: ['T-Shirt', 'Shirt', 'Sweatshirt', 'Dress', 'Skirt', 'Jeans', 'Pants', 'Jumpsuit', 'Office Suit'],
+      selectedItem: null
     };
   },
   methods: {
@@ -157,6 +319,10 @@ export default {
       this.links.forEach((link, i) => {
         link.clicked = i === index;
       });
+    },
+
+    selectItem(index) {
+      this.selectedItem = index;
     }
   }
 };

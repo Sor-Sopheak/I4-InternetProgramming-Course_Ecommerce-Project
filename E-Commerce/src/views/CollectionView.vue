@@ -1,6 +1,6 @@
 <template>
       <div class="w-screen">
-        <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow">
+        <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow z-10">
           <div class="logo flex flex-column">
             <h1 class="font-jolly font-black text-3xl ml-12">
               <span class="after:content-['M'] after:text-orange-600">Style</span>ingle
@@ -102,13 +102,13 @@
 
         <section>
           <div>
-            <div class="flex justify-between text-center items-center h-[100px] border-2 border-red-500 w-[80%]">
-              <a href="#">All</a>
-              <a href="#">Springtime</a>
-              <a href="#">Spring Shower</a>
-              <a href="#">Spring Layers</a>
-              <a href="#">Spring Wind</a>
-              <a href="#">Spring Chill</a>
+            <div class="flex justify-center text-center m-5 font-semibold text-xl">
+              <a href="#" class="p-4 underline">All</a>
+              <a href="#" class="p-4">Springtime</a>
+              <a href="#" class="p-4">Spring Shower</a>
+              <a href="#" class="p-4">Spring Layers</a>
+              <a href="#" class="p-4">Spring Wind</a>
+              <a href="#" class="p-4">Spring Chill</a>
             </div>
 
             <div class="flex justify-center items-center mt-8">
@@ -154,7 +154,7 @@
             <div class="bg-orange-600 h-[180px] flex justify-center items-center text-white text-center mt-8">
               <img src="@/assets/images/2women.png" alt="" class="object-cover h-[200px]">
               <div>
-                <h4>WE OFFER BRAND NEW STYLES</h4>
+                <p class="text-xl text-shadow">WE OFFER BRAND NEW STYLES</p>
                 <p>Let's us explore your style</p>
                 <button class="text-black text-xs h-[25px] bg-white px-3 rounded-2xl mt-5 shadow-md">SEE FULL COLLECTION</button>
               </div> 
@@ -345,6 +345,10 @@
     }
     .font-jetbrains-mono{
       font-family: 'JetBrains Mono', monospace;
+    }
+
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
     
 </style>

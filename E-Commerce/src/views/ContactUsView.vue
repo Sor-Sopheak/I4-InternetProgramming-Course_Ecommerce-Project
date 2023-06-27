@@ -38,7 +38,66 @@
 
     <section>
       <div class="">
-        
+        <div class="relative h-[300px]">
+          <img src="@/assets/images/officeshop.jpg" alt="" class="object-cover h-[300px] w-[100%] opacity-75">
+          <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl">Contact Us</p>
+        </div>
+
+        <div class="flex flex-col text-center mt-12">
+          <p class="font-bold text-4xl pb-5">Get In Touch With Us</p>
+          <p class="text-[#6d6d6d]">Please contact us using the informatioin below. To locate contact in the Business </p>
+          <p class="text-[#6d6d6d]">office closet to you, visit our office websites.</p>
+          <div class="flex justify-between m-12">
+            <div class="flex justify-between text-start items-center w-[280px]">
+              <img src="@/assets/images/location.png" alt="" class="object-cover h-[80px] w-[80px]">
+              <div>
+                <p class="font-bold text-xl pb-5">Office</p>
+                <p class="text-[#6d6d6d]">Phnom Penh, Sensok,</p>
+                <p class="text-[#6d6d6d]">Cambodia</p>
+              </div>
+            </div>
+
+            <div class="flex justify-between text-start items-center w-[250px]">
+              <img src="@/assets/images/phonecall.png" alt="" class="object-cover h-[80px] w-[80px]">
+              <div>
+                <p class="font-bold text-xl pb-5">Call Us</p>
+                <p class="text-[#6d6d6d]">(+855) 23 123 098</p>
+                <p class="text-[#6d6d6d]">(+855) 23 123 099</p>
+              </div>
+            </div>
+
+            <div class="flex justify-between text-start items-center w-[350px]">
+              <img src="@/assets/images/email.png" alt="" class="object-cover h-[80px] w-[80px]">
+              <div>
+                <p class="font-bold text-xl pb-5">Send Us</p>
+                <p class="text-[#6d6d6d]">stylemingle.com</p>
+                <p class="text-[#6d6d6d]">ssopheaksor2002@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 bg-[#ececec]">
+          <div class="flex flex-col justify-center items-center text-center">
+            <p class="text-2xl pb-4 pt-8">Drop Us A Line</p>
+            <div class="w-[50%] text-[#6d6d6d]">
+              <p>Whether you have a question about features, trails, pricing, or anything else, our team is ready to answer.</p>
+            </div>
+
+            <div class="mt-12">
+              <textarea name="" id="" cols="45" rows="4" placeholder="Your Message" class="border-2 rounded p-2"></textarea>
+              <div class="flex justify-between pt-2">
+                <input type="text" placeholder="Your Name" class="bg-white rounded-full outline-none h-[30px] w-[150px] text-sm px-2">
+                <input type="email" placeholder="Your Email" class="bg-white rounded-full outline-none h-[30px] w-[150px] text-sm px-2">
+              </div>
+              <button class="w-[100%] h-[30px] bg-black text-white text-sm rounded-full mt-4">SUBMIT</button>
+            </div>
+          </div>
+
+          <div class="h-[450px]">
+            <img src="@/assets/images/map.png" alt="" class="object-cover h-[450px]">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -81,7 +140,7 @@
             <p>Subcribe to get the lotest on sales, new releases and more ...</p>
             <div class="w-[50%] flex justify-between my-3">
               <input type="email" class="bg-orange-600 font-medium w-[78%] h-[27px] placeholder-white p-1 rounded outline-none text-white" placeholder="Enter your email here">
-              <button class="bg-green-700 px-2 rounded h-[27px] shadow-lg text-white">SUBCRIBE</button>
+              <button class="bg-green-700 px-2 rounded-full h-[27px] shadow-lg text-white">Send</button>
             </div>
             <span class="after:content-['SopheakSor'] after:text-orange-600">StareM4.Power by </span>
           </div>
