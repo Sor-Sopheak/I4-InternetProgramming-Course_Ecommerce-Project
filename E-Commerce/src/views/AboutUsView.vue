@@ -78,7 +78,7 @@
               <input type="email" class="bg-orange-600 font-medium w-[78%] h-[27px] placeholder-white p-1 rounded outline-none text-white" placeholder="Enter your email here">
               <button class="bg-green-700 px-2 rounded h-[27px] shadow-lg text-white">SUBCRIBE</button>
             </div>
-            <span class="after:content-['Sopheak'] after:text-orange-600">StareM4.Power by </span>
+            <span class="after:content-['SopheakSor'] after:text-orange-600">StareM4.Power by </span>
           </div>
           <div>
             <p>Supported payment systems</p>
