@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen m-0 p-0">
-    <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow">
+    <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow z-10">
       <div class="logo flex flex-column">
         <h1 class="font-jolly font-black text-3xl ml-12">
           <span class="after:content-['M'] after:text-orange-600">Style</span>ingle
@@ -40,7 +40,7 @@
       <div class="">
         <div class="relative h-[300px]">
           <img src="@/assets/images/officeshop.jpg" alt="" class="object-cover h-[300px] w-[100%] opacity-75">
-          <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl">Contact Us</p>
+          <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-6xl text-white text-shadow">Contact Us</p>
         </div>
 
         <div class="flex flex-col text-center mt-12">
@@ -85,7 +85,7 @@
             </div>
 
             <div class="mt-12">
-              <textarea name="" id="" cols="45" rows="4" placeholder="Your Message" class="border-2 rounded p-2"></textarea>
+              <textarea name="" id="" cols="45" rows="4" placeholder="Your Message" class="border-2 rounded p-2 outline-none"></textarea>
               <div class="flex justify-between pt-2">
                 <input type="text" placeholder="Your Name" class="bg-white rounded-full outline-none h-[30px] w-[150px] text-sm px-2">
                 <input type="email" placeholder="Your Email" class="bg-white rounded-full outline-none h-[30px] w-[150px] text-sm px-2">
@@ -140,7 +140,7 @@
             <p>Subcribe to get the lotest on sales, new releases and more ...</p>
             <div class="w-[50%] flex justify-between my-3">
               <input type="email" class="bg-orange-600 font-medium w-[78%] h-[27px] placeholder-white p-1 rounded outline-none text-white" placeholder="Enter your email here">
-              <button class="bg-green-700 px-2 rounded-full h-[27px] shadow-lg text-white">Send</button>
+              <button class="bg-green-700 px-2 rounded h-[27px] shadow-lg text-white">SUBCRIBE</button>
             </div>
             <span class="after:content-['SopheakSor'] after:text-orange-600">StareM4.Power by </span>
           </div>
@@ -203,5 +203,9 @@ export default {
 }
 .font-dancing{
   font-family: 'Dancing Script', cursive;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 </style>

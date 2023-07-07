@@ -73,7 +73,7 @@
                 </div>
 
                 <div>
-                  <div class="">
+                  <div>
                     <div class="h-[40px] w-[35%] border-solid border-orange-600 border-2 rounded-full flex items-center justify-between m-5"> 
                       <div class="flex justify-center items-center px-2">
                         <img src="@/assets/images/search.png" alt="search icon" class="w-[25px] h-[25px]">
@@ -218,7 +218,7 @@
                       </div>
                       <div class="p-4">
                         <p class="font-bold">aslfjsafdsf</p>
-                        <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center ">
                           <div class="mt-4">
                             <p class="text-sm text-[#6d6d6d]">Price:</p>
                             <p>$200</p>

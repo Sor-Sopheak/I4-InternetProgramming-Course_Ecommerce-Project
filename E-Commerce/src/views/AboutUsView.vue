@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen m-0 p-0">
-    <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow">
+    <nav class="w-[100%] grid grid-cols-[0.5fr,1.3fr,0.5fr] font-bold border-b-2 border-gray-300 h-[60px] items-center sticky top-0 bg-white shadow z-10">
       <div class="logo flex flex-column">
         <h1 class="font-jolly font-black text-3xl ml-12">
           <span class="after:content-['M'] after:text-orange-600">Style</span>ingle
@@ -36,6 +36,53 @@
       </div>
     </nav>
 
+    <section>
+      <div class="w-[100%]">
+        <div class="relative">
+          <img src="@/assets/images/bgimg3.png" alt="" class="object-cover w-[100%] h-[300px] opacity-75">
+          <div class="absolute p-2 bg-white flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-[#a6a6a6]">
+            <img src="@/assets/images/aboutmegirl1.jpg" alt="" class="object-cover h-[350px] w-[350px] pr-5">
+            <div class="py-10 pr-24">
+              <p class="pb-6">Hello</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione explicabo praesentium provident perspiciatis, non voluptatem ipsam adipisci sapiente assumenda. Officiis inventore ullam veritatis delectus dolorem! Unde asperiores quia commodi dicta.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-52 flex flex-col justify-center items-center text-center">
+          <p class="font-bold text-lg">WORKING PROGRESS</p>
+          <div class="mt-6 flex flex-col-3 justify-center items-center">
+            <img src="@/assets/images/aboutme2.jpg" alt="" class="object-contain w-full h-[350px] pr-2">
+            <img src="@/assets/images/aboutme3.jpg" alt="" class="object-contain w-full h-[350px] pr-2">
+            <img src="@/assets/images/aboutme4.jpg" alt="" class="object-contain w-full h-[350px] pr-2">
+          </div>
+          <div class="mt-6 w-[55%] flex text-left">
+            <p class="text-7xl">L</p>
+            <p class="pt-2 pl-3 text-[#6a6a6a]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolorem, porro harum ipsam culpa vel, nihil accusamus consectetur et temporibus eos alias! Consequuntur eligendi, assumenda dolor quasi quis esse at.</p>
+          </div>
+          <div class="w-[55%] mt-12">
+            <p class="font-bold text-lg mb-5">FEATURED ON</p>
+            <div class="w-[100%] h-px bg-gray-300 mt-4 mb-6"></div>
+            <div class="flex justify-between">
+              <p>Hello</p>
+              <p>Hello</p>
+              <p>Hello</p>
+              <p>Hello</p>
+              <p>Hello</p>
+            </div>
+            <div class="flex flex-col-2 bg-[#eeeae9] mt-10 h-[200px]">
+              <img src="@/assets/images/aboutme5.jpg" alt="" class="object-contain w-[350px] h-[200px]">
+              <div class="text-left p-10">
+                <p class="font-bold text-lg pb-5">KEEP IN TOUCH FOR THE GOOD STUFF</p>
+                <p class="text-[#6a6a6a]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eos voluptatibus exercitationem laborum, maiores animi quam numquam officiis perspiciatis amet debitis sed at recusandae eum nulla voluptate, mollitia ab voluptatem.</p>
+                <p class="text-right text-[#6a6a6a]">Good bey</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+     
+    </section>
 
     <div class="w-[100%] h-px bg-gray-300 mt-28"></div>
     
