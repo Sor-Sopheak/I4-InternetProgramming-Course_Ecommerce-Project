@@ -19,10 +19,10 @@ export default {
 
 <template>
   <div id="app">
-     <div>
+     <!-- <div>
       <Checkout @cancel="isCheckout = false" v-if="isCheckout"/>
       <Index v-else @checkout="isCheckout = true"/>
-    </div>
+    </div> -->
 
     <router-view></router-view>
     
