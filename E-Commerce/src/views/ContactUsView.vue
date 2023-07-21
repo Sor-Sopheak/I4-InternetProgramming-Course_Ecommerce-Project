@@ -95,7 +95,8 @@
           </div>
 
           <div class="h-[450px]">
-            <img src="@/assets/images/map.png" alt="" class="object-cover h-[450px]">
+            <!-- <img src="@/assets/images/map.png" alt="" class="object-cover h-[450px]"> -->
+            <iframe class="object-cover h-[450px] filter grayscale-[50%]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.472126613028!2d104.8698086096336!3d11.517951388632271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109506c79f21167%3A0xf2aacd9522c28081!2sST!5e0!3m2!1sen!2skh!4v1689150646050!5m2!1sen!2skh" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>

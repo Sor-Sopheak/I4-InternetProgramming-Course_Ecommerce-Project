@@ -6,14 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    // fontFamily: {
-    //   'JollyLodger': ['"Jolly Lodger', 'jolly-lodger']
-    // },
-    // fontFamily_A: {
-    //   'Alkatra': ['Alkatra']
-    // },
+
   },
   plugins: [
-    require('tailwind-scrollbar-hide')
+    require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/forms'),
   ],
 }

@@ -7,6 +7,7 @@ export default {
   data(){
     return{
       isCheckout: false,
+      name: 'App',
     };
   },
   components: {
@@ -17,9 +18,14 @@ export default {
 </script>
 
 <template>
-  <div>
-    <Checkout @cancel="isCheckout = false" v-if="isCheckout"/>
-    <Index v-else @checkout="isCheckout = true"/>
+  <div id="app">
+     <div>
+      <Checkout @cancel="isCheckout = false" v-if="isCheckout"/>
+      <Index v-else @checkout="isCheckout = true"/>
+    </div>
+
+    <router-view></router-view>
+    
   </div>
 </template>
 
