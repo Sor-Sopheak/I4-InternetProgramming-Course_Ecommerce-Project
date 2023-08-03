@@ -17,7 +17,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        requireAuth: true, // This route requires authentication
+      }
     },
     {
       path: '/collection',
@@ -28,7 +31,7 @@ const router = createRouter({
     {
       path: '/category',
       name: 'category',
-      component: () => import('../views/CategoryView.vue')
+      component: () => import('../views/CategoryView.vue'),
     },
     {
       path: '/aboutus',
@@ -40,42 +43,80 @@ const router = createRouter({
       name: 'contactus',
       component: () => import('../views/ContactUsView.vue')
     },
-    // {
-      // path: '/api',
-      // name: 'api',
-      // children: [
-      //   {
-      //     path: 'login',
-      //     name: 'login',
-      //     component: () => import('../views/LoginView.vue')
-      //   },
-      //   {
-      //     path: 'request-password',
-      //     name: 'requestPassword',
-      //     component: () => import('../views/RequestPassword.vue')
-      //   },
-      //   {
-      //     path: 'reset-password',
-      //     name: 'resetPassword',
-      //     component: () => import('../views/ResetPassword.vue')
-      //   },
-      //   {
-      //     path: '/:pathMatch(.*)',
-      //     name: 'notfound',
-      //     component: () => import('../views/NotFound.vue')
-      //   }
-      // ]
-    // },
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue')
+      component: () => import('../views/LoginView.vue'),
+      beforeEnter:(to, from, next) => {
+        const token = localStorage.getItem("token");
+        if(token) {
+          next({ name: 'home' });
+        }else {
+          next();
+        }
+      }
     },
-    // {
-    //   path: '/signup',
-    //   name: 'signup',
-    //   component: () => import('../views/SignUpView.vue')
-    // }
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/SignUpView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'notfound',
+      component: () => import('../views/NotFound.vue')
+    },
+    {
+      path: '/productDetail/:id',
+      name: 'detailproduct',
+      component: () => import('../views/DetailProductView.vue')
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import('../views/CartView.vue')
+    },
+    {
+      path: '/wishlist',
+      name: 'wishlist',
+      component: () => import('../views/WishlistView.vue')
+    },
+    {
+      path: '/visa',
+      name: 'visa',
+      component: () => import('../views/paymentmothod/Visa.vue')
+    },
+    {
+      path: '/mater-card',
+      name: 'master',
+      component: () => import('../views/paymentmothod/MasterCard.vue')
+    },
+    {
+      path: '/american-express',
+      name: 'americanexpress',
+      component: () => import('../views/paymentmothod/AmericanExpress.vue')
+    },
+    {
+      path: '/paypal',
+      name: 'paypal',
+      component: () => import('../views/paymentmothod/PayPal.vue')
+    },
+    {
+      path: '/shipping-address',
+      name: 'shippingaddress',
+      component: () => import('../views/ShippingAddress.vue')
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: () => import('../views/Checkout.vue')
+    },
+    {
+      path: '/completed',
+      name: 'completed',
+      component: () => import('../views/ThankYou.vue')
+    }
+  
   ]
 })
 
