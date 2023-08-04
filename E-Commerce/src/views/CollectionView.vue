@@ -1,5 +1,5 @@
 <template>
-      <div class="w-screen">
+      <div class="w-full">
         <section>
           <div class="h-500px bg-[#fab89c] grid grid-cols-[0.7fr,1fr]">
             <img src="@/assets/images/girlcollecthead.png" alt="" class="object-contain w-[76.9%] mx-16">

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-screen min-h-screen bg-gray-50 py-5">
+  <div class="min-w-full min-h-screen bg-gray-50 py-5">
     <div class="px-5">
         <router-link :to="{ name: 'cart' }">
             <button class="text-3xl md:text-5xl font-bold hover:text-orange-600 mt-4">&lt;Checkout</button>
