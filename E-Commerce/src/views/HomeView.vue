@@ -36,20 +36,6 @@
           </div>
 
           <div class="flex-grow h-px bg-gray-400 m-5"></div> 
-          <!-- <div class="flex flex-col mx-5 font-jaldi text-2xl">
-            <div class="text-gray-500 flex justify-between">
-              <p>Outdoor</p>
-              <p>23</p>
-            </div>
-            <div class="text-gray-500 flex justify-between">
-              <p>Office</p>
-              <p>76</p>
-            </div>
-            <div class="text-gray-500 flex justify-between">
-              <p>Party</p>
-              <p>51</p>
-            </div>
-          </div> -->
 
           <div v-for="category in filteredMoreCategories" :key="category.id" @click="getProducts(category.id)" class="text-2xl">
             <div class="ml-2 cursor-pointer text-2xl text-gray-500 grid grid-cols-[1fr,1fr,0.5fr] h-[70px] flex-row justify-center items-center text-center">
@@ -60,7 +46,6 @@
           </div>
         </div>
 
-        <!-- items -->
         <div class="grid">
           <div class="flex justify-between font-jaldi mx-7">
             <div>

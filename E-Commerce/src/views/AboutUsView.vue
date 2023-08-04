@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen">
+  <div class="w-full">
     <section>
       <div class="w-[100%]">
         <div class="relative">
@@ -43,8 +43,8 @@
               <p>Personalized</p>
               <p>Hassle-Free</p>
             </div>
-            <div class="flex flex-col-2 bg-[#eeeae9] mt-10 h-[200px]">
-              <img src="@/assets/images/aboutus2.jpg" alt="" class="object-contain w-[350px] h-[200px]">
+            <div class="flex flex-col-2 bg-[#eeeae9] mt-10 h-[210px]">
+              <img src="@/assets/images/aboutus2.jpg" alt="" class="object-contain w-[350px] h-[210px]">
               <div class="text-left p-10">
                 <p class="font-bold text-lg pb-5">KEEP IN TOUCH FOR THE GOOD STUFF</p>
                 <p class="text-[#6a6a6a]">

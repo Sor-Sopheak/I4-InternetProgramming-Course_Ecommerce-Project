@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="w-full">
     <section>
       <div>
-        <div class="grid grid-cols-[0.2fr,1fr]">
+        <!-- grid grid-cols-[0.2fr,0.8fr] -->
+        <div class="grid grid-cols-[20%,80%]">
           <div class="border-2 border-gray-300 text-start pr-12">
             <p class="font-semibold text-xl mt-5 ml-4">Category</p>
             <div class="w-[90%] m-2 ml-20">
@@ -12,8 +13,8 @@
             </div>
           </div>
 
-          <div>
-            <div class="h-[40px] w-[35%] border-solid border-orange-600 border-2 rounded-full flex items-center justify-between m-5">
+          <div class="">
+            <div class="h-[40px] w-2/3 border-solid border-orange-600 border-2 rounded-full flex items-center justify-between m-5">
               <div @click="focusInput" class="flex justify-center items-center px-2">
                 <img
                   src="@/assets/images/search.png"
@@ -28,7 +29,7 @@
                 Search
               </button>
             </div>
-            <div class="w-[100%] h-px bg-gray-300 my-8"></div>
+            <div class=" h-px bg-gray-300 my-8"></div>
 
             <div class="flex p-5">
               <router-link :to="{ name: 'home' }" class="hover:text-orange-600 hover:underline">Home</router-link>
@@ -51,7 +52,7 @@
             </div>
             
 
-            <div class="grid grid-rows-2 grid-flow-col mx-14 overflow-x-auto w-[70%]">
+            <div class="grid grid-rows-2 grid-flow-col mx-14 overflow-x-auto">
               <div v-for="product in products" :key="product.id"
                 class="w-[280px] h-[420px] relative parent-container border-2 rounded-2xl m-3">
                 <router-link :to="'/productDetail/'+[product.id]">
