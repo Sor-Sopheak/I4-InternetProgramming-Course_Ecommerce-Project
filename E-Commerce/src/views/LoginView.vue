@@ -60,7 +60,7 @@ export default {
                 password: this.password,
             };
 
-            await fetch('http://localhost:8000/api/login', {
+            await fetch('https://sopheak.tysophearum.tech/api/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

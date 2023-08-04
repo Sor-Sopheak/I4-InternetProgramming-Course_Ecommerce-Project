@@ -25,7 +25,7 @@ export default {
 
     async mounted() {
         try{
-            const categoryResponse = await fetch(`http://localhost:8000/api/categories`);
+            const categoryResponse = await fetch(`https://sopheak.tysophearum.tech/api/categories`);
             const cartegoryData = await categoryResponse.json();
             this.categories = cartegoryData;
         } catch (error) {
