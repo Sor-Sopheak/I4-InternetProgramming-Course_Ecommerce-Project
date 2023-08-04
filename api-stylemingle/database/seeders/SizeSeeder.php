@@ -13,7 +13,7 @@ class SizeSeeder extends Seeder
      */
     public function run(): void
     {
-        $existingSizes = Size::whereIn('size', ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'])->count();
+        $existingSizes = Size::whereIn('size', ['XS', 'S', 'M', 'L', 'XL', 'XXL'])->count();
 
         if($existingSizes === 0) {
             Size::create(['size' => 'XS']);
@@ -22,7 +22,6 @@ class SizeSeeder extends Seeder
             Size::create(['size' => 'L']);
             Size::create(['size' => 'XL']);
             Size::create(['size' => 'XXL']);
-            Size::create(['size' => 'XXXL']);
         }
     }
 }

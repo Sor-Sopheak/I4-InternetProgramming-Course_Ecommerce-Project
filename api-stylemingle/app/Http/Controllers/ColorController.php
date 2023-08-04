@@ -14,7 +14,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        return Color::all();
     }
 
     /**
@@ -47,7 +47,7 @@ class ColorController extends Controller
      */
     public function show(Color $color)
     {
-        //
+        return Color::find($color);
     }
 
     /**
@@ -63,7 +63,10 @@ class ColorController extends Controller
      */
     public function update(UpdateColorRequest $request, Color $color)
     {
-        //
+        $color = Color::find($color);
+        $color->update($request->all());
+
+        return $color;
     }
 
     /**
@@ -71,6 +74,14 @@ class ColorController extends Controller
      */
     public function destroy(Color $color)
     {
-        //
+        return Color::destroy($color);
+    }
+
+    public function searchName($name) {
+        return Color::where('color', 'like', '%'.$name.'%')->get();
+    }
+
+    public function searchCode($code) {
+        return Color::where('color_code', 'like', '%'.$code.'%')->get();
     }
 }

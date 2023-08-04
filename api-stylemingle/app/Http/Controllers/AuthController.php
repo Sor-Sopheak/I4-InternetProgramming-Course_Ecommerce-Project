@@ -8,10 +8,12 @@ use App\Models\Role;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\FuncCall;
 
 class AuthController extends Controller
 {
-    public function register(Request $request) {
+
+    public function signup(Request $request) {
         $fields = $request->validate([
             'first_name' => 'string',
             'last_name' => 'string',
@@ -58,18 +60,6 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request) {
-        // $user = auth()->user();
-
-        // if ($user) {
-        //     $user->tokens()->delete();
-        //     return [
-        //         'message' => 'Logged out!!'
-        //     ];
-        // } else {
-        //     return response([
-        //         'message' => 'User not logged in!'
-        //     ], 401); // Return 401 Unauthorized status code
-        // }
 
         Auth::user()->tokens->each(function($token, $key) {
             $token->delete();

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\PaymentMethod;
 use App\Http\Requests\StorePaymentMethodRequest;
 use App\Http\Requests\UpdatePaymentMethodRequest;
+use App\Models\Category;
+use App\Models\Product;
 
 class PaymentMethodController extends Controller
 {
@@ -13,7 +15,7 @@ class PaymentMethodController extends Controller
      */
     public function index()
     {
-        //
+        return PaymentMethod::all();
     }
 
     /**
@@ -29,7 +31,15 @@ class PaymentMethodController extends Controller
      */
     public function store(StorePaymentMethodRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $paymentMethod = PaymentMethod::create([
+            'name' => $request->input('name')
+        ]);
+
+        return response()->json(['message' => 'Payment method created successfully', 'paymentMethod' => $paymentMethod], 201);
     }
 
     /**
@@ -37,7 +47,7 @@ class PaymentMethodController extends Controller
      */
     public function show(PaymentMethod $paymentMethod)
     {
-        //
+        return Category::find($paymentMethod);
     }
 
     /**
@@ -53,7 +63,10 @@ class PaymentMethodController extends Controller
      */
     public function update(UpdatePaymentMethodRequest $request, PaymentMethod $paymentMethod)
     {
-        //
+        $paymentMethod = Product::find($paymentMethod);
+        $paymentMethod->update($request->all());
+
+        return $paymentMethod;
     }
 
     /**
@@ -61,6 +74,10 @@ class PaymentMethodController extends Controller
      */
     public function destroy(PaymentMethod $paymentMethod)
     {
-        //
+        return PaymentMethod::destroy($paymentMethod);
+    }
+
+    public function search($name) {
+        return PaymentMethod::where('type', 'like', '%'.$name.'%')->get();
     }
 }

@@ -13,7 +13,7 @@ class ShippingAddressController extends Controller
      */
     public function index()
     {
-        //
+        return ShippingAddress::all();
     }
 
     /**
@@ -29,15 +29,40 @@ class ShippingAddressController extends Controller
      */
     public function store(StoreShippingAddressRequest $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required',
+            'city',
+            'postal_code',
+            'country',
+            'state',
+            'company',
+        ]);
+        $shippingAddress = ShippingAddress::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'phone_number' => $request->input('phone_number'),
+            'address' => $request->input('address'),
+            'city' => $request->input('city'),
+            'postal_code' => $request->input('postal_code'),
+            'country' => $request->input('country'),
+            'state' => $request->input('state'),
+            'company' => $request->input('company'),
+        ]);
+
+        return response()->json(['message' => 'Shipping address created successfully', 'shippingAddress' => $shippingAddress], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(ShippingAddress $shippingAddress)
+    public function show(string $shippingAddress)
     {
-        //
+        return ShippingAddress::find($shippingAddress);
     }
 
     /**
@@ -51,9 +76,12 @@ class ShippingAddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateShippingAddressRequest $request, ShippingAddress $shippingAddress)
+    public function update(UpdateShippingAddressRequest $request, string $shippingAddress)
     {
-        //
+        $shippingAddress = ShippingAddress::find($shippingAddress);
+        $shippingAddress->update($request->all());
+
+        return $shippingAddress;
     }
 
     /**
@@ -61,6 +89,6 @@ class ShippingAddressController extends Controller
      */
     public function destroy(ShippingAddress $shippingAddress)
     {
-        //
+        return ShippingAddress::destroy($shippingAddress);
     }
 }

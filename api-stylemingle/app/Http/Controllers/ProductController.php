@@ -20,9 +20,9 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function type(string $type)
     {
-        //
+        return Product::where('product_type', 'like', $type)->get();
     }
 
     /**
@@ -31,20 +31,40 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $request->validate([
-            'product_name' => 'required',
-            'image' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'product_name' => 'required|string|unique:products,product_name',
+            'product_type' => 'string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'price' => 'required',
+            'description'
         ]);
 
-        return Product::create($request->all());
+        $imagePath = '';
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/images', $filename);
+            $imagePath = '/storage/images/' . $filename;
+        }
+
+        $product = Product::create([
+            'product_name' => $request->input('product_name'),
+            'product_type' => $request->input('product_type'),
+            'image' => $imagePath,
+            'price' => $request->input('price'),
+            'category_id' => $request->input('category_id'),
+            'description' => $request->input('description')
+        ]);
+
+        return response()->json(['message' => 'Product created successfully', 'category' => $product], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $id)
+    public function show(string $id)
     {
-        return Product::find($id);
+        return Product::with(['product_images'])->where('id', '=', $id)->first();
     }
 
     /**
@@ -58,9 +78,10 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        $product = Product::find($id);
+        // $product = Product::find($id);
+
         $product->update($request->all());
 
         return $product;
@@ -69,7 +90,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $id)
+    public function destroy(string $id)
     {
         return Product::destroy($id);
     }

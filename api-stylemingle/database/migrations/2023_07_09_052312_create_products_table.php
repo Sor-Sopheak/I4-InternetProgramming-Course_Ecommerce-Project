@@ -16,10 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('product_name'); 
-            $table->string('image', 500); 
-            $table->string('description'); 
+            $table->string('product_type');
+            $table->string('image'); 
+            $table->longText('description')->nullable(); 
             $table->double('price'); 
-            // $table->decimal('price', 5, 2);
             $table->timestamps();
         });
     }

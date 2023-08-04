@@ -32,10 +32,22 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         $request->validate([
-            'category_name' => 'required'
+            'category_name' => 'required|string|unique:categories,category_name',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+        $imagePath = '';
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/images', $filename);
+            $imagePath = '/storage/images/' . $filename;
+        }
+        $category = Category::create([
+            'category_name' => $request->input('category_name'),
+            'image' => $imagePath
         ]);
 
-        return $category = Category::create($request->all());
+        return response()->json(['message' => 'Category created successfully', 'category' => $category], 201);
 
         // if(auth()->user()->hasRole('admin')) {
         //     $category = Category::create($request->all());
@@ -46,12 +58,14 @@ class CategoryController extends Controller
         // }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Category $id)
     {
-        return Category::find($id);
+        return Category::find($id)->first();
+    }
+
+    public function products(Category $id)
+    {
+        return Category::with(['products'])->find($id)->first();
     }
 
     /**
@@ -65,12 +79,19 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $id)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $category = Category::find($id);
-        $category->update($request->all());
 
-        return $category;
+        $request->validate([
+            'category_name' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming you want to validate the image file
+        ]);
+
+        $category->update($request->only('category_name', 'image'));
+
+        $updatedCategory = Category::find($category->id);
+
+        return response()->json($updatedCategory);
     }
 
     /**
