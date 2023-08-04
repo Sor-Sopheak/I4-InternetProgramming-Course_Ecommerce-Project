@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen m-0 p-0" v-if="categories != null">
+  <div class="w-full" v-if="categories != null">
     <div>
         <div class="ml-12 mt-4 flex">
             <router-link :to="{ name: 'home' }" class="hover:text-orange-600 hover:underline">Home</router-link>

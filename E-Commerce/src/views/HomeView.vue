@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen m-0 p-0">
+  <div class="w-full">
     <section class="flex flex-col w-[100%]">
       <div class="flex justify-between h-[200px]">
         <div class="left_header w-[50%] ml-[100px] mt-[25px]">
