@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
+use App\Models\Product;
+use Illuminate\Validation\Rules\Can;
 
 class CartController extends Controller
 {
@@ -13,7 +15,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        return Cart::all();
     }
 
     /**
@@ -29,7 +31,23 @@ class CartController extends Controller
      */
     public function store(StoreCartRequest $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'exists:users,id',
+            'product_id' => 'exists:products,id',
+            'size_id' => 'exists:sizes,id',
+            'quantity',
+            'price'
+        ]);
+
+        $cart = Cart::create([
+            'user_id' => $request->input('user_id'),
+            'product_id' => $request->input('product_id'),
+            'size_id' => $request->input('size_id'),
+            'quantity' => $request->input('quantity'),
+            'price' => $request->input('price')
+        ]);
+
+        return response()->json(['message' => 'Cart created successfully', 'cart' => $cart], 201);
     }
 
     /**
@@ -37,7 +55,7 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        //
+        return Cart::find($cart);
     }
 
     /**
@@ -51,16 +69,37 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCartRequest $request, Cart $cart)
+    public function update(UpdateCartRequest $request, string $cart)
     {
-        //
+        $cart = Cart::find($cart);
+        $cart->update($request->all());
+
+        return $cart;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy(string $cart)
     {
-        //
+        return Cart::destroy($cart);
+    }
+
+    public function getProducts(string $userId)
+    {
+        $carts = Cart::all()->where('user_id', '=', $userId);
+        foreach ($carts as $cart) {
+            $product = Product::find($cart->product_id);
+            $cart->product = $product;
+        }
+        return $carts;
+    }
+
+    public function clear(string $userId){
+        $carts = Cart::all()->where('user_id', '=', $userId);
+        foreach ($carts as $cart) {
+            Cart::destroy($cart->id);
+        }
+        return 1;
     }
 }

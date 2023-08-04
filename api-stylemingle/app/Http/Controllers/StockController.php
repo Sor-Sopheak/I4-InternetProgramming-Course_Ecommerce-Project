@@ -13,7 +13,7 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        return Stock::all();
     }
 
     /**
@@ -29,15 +29,20 @@ class StockController extends Controller
      */
     public function store(StoreStockRequest $request)
     {
-        //
+        $request->validate([
+            'product_detail_id' => 'required|exists:product_details,id',
+            'quantity' => 'required'
+        ]);
+
+        return Stock::create($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Stock $stock)
+    public function show(Stock $id)
     {
-        //
+        return Stock::find($id);
     }
 
     /**
@@ -51,16 +56,19 @@ class StockController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStockRequest $request, Stock $stock)
+    public function update(UpdateStockRequest $request, Stock $id)
     {
-        //
+        $stock = Stock::find($id);
+        $stock->update($request->all());
+
+        return $stock;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stock $stock)
+    public function destroy(Stock $id)
     {
-        //
+        return Stock::destroy($id);
     }
 }

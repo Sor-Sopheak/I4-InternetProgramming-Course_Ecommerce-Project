@@ -26,13 +26,13 @@ class User extends Authenticatable
         'role_id',
     ];
 
-    public function roles() {
-        return $this->belongsToMany(Role::class);
+    public function products() {
+        return $this->hasMany(Product::class);
     }
 
-    public function hasRole($role){
-        return $this->roles()->where('type', $role)->exists();    
-    }
+    // public function hasRole($role){
+    //     return $this->roles()->where('type', $role)->exists();    
+    // }
 
 
     /**

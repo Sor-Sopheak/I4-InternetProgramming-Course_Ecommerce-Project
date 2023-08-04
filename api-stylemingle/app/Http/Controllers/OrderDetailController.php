@@ -13,7 +13,7 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        return OrderDetail::all();
     }
 
     /**
@@ -29,7 +29,21 @@ class OrderDetailController extends Controller
      */
     public function store(StoreOrderDetailRequest $request)
     {
-        //
+        $request->validate([
+            'product_detail_id' => 'required|exists:product_details,id',
+            'order_id' => 'required|exists:orders,id',
+            'quantity'=> 'required',
+            'total_price'
+        ]);
+
+        $orderDetail = OrderDetail::create([
+            'product_detail_id',
+            'order_id',
+            'quantity',
+            'total_price',
+        ]);
+
+        return response()->json(['message' => 'Order detaail created successfully', 'orderDetail' => $orderDetail], 201);
     }
 
     /**
@@ -37,7 +51,7 @@ class OrderDetailController extends Controller
      */
     public function show(OrderDetail $orderDetail)
     {
-        //
+        return OrderDetail::find($orderDetail);
     }
 
     /**
@@ -53,7 +67,10 @@ class OrderDetailController extends Controller
      */
     public function update(UpdateOrderDetailRequest $request, OrderDetail $orderDetail)
     {
-        //
+        $orderDetail = OrderDetail::find($orderDetail);
+        $orderDetail->update($request->all());
+
+        return $orderDetail;
     }
 
     /**
@@ -61,6 +78,6 @@ class OrderDetailController extends Controller
      */
     public function destroy(OrderDetail $orderDetail)
     {
-        //
+        return OrderDetail::destroy($orderDetail);
     }
 }

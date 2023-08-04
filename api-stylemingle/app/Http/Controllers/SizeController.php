@@ -13,7 +13,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        //
+        return Size::all();
     }
 
     /**
@@ -29,7 +29,10 @@ class SizeController extends Controller
      */
     public function store(StoreSizeRequest $request)
     {
-        //
+        $request->validate([
+            'size' => 'required',
+        ]);
+        return Size::create($request->all());
     }
 
     /**
@@ -37,7 +40,7 @@ class SizeController extends Controller
      */
     public function show(Size $size)
     {
-        //
+        return Size::find($size);
     }
 
     /**
@@ -53,7 +56,10 @@ class SizeController extends Controller
      */
     public function update(UpdateSizeRequest $request, Size $size)
     {
-        //
+        $size = Size::find($size);
+        $size->update($request->all());
+
+        return $size;
     }
 
     /**
@@ -61,6 +67,10 @@ class SizeController extends Controller
      */
     public function destroy(Size $size)
     {
-        //
+        return Size::destroy($size);
+    }
+
+    public function search($name) {
+        return Size::where('size', 'like', '%'.$name.'%')->get();
     }
 }

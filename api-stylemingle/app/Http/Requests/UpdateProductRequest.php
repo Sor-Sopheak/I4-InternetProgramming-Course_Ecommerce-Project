@@ -11,7 +11,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,39 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        $method = $this->method();
+
+        if ($method == 'PUT') {
+            return [
+                'product_name'        => ['required'],
+                'product_type'        => ['required'],
+                'image'       => ['required'],
+                'price'     => ['required'],
+                'category_id'        => ['required'],
+                'description'       => ['required'],
+                'postalCode'  => ['required']
+            ];
+        } else {
+            return [
+                'product_name'        => ['sometimes', 'required'],
+                'product_type'        => ['sometimes', 'required'],
+                'image'       => ['sometimes', 'required'],
+                'price'     => ['sometimes', 'required'],
+                'category_id'        => ['sometimes', 'required'],
+                'description'       => ['sometimes', 'required'],
+                'postalCode'  => ['sometimes', 'required']
+            ];
+        }
     }
+
+
+    // // for matching
+    // protected function prepareForValidation()
+    // {
+    //     if ($this->postalCode) {
+    //         $this->merge([
+    //             'postal_code' => $this->postalCode
+    //         ]);
+    //     }
+    // }
 }
