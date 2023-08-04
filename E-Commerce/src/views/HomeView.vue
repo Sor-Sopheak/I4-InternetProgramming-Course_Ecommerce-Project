@@ -29,7 +29,7 @@
           <h1 class="font-bold text-center p-2 text-2xl">CATEGORY</h1>
           <div v-for="category in filtered3Categories" :key="category.id" @click="getProducts(category.id)">
             <div class="ml-4 text-2xl cursor-pointer text-gray-500 grid grid-cols-[1fr,1fr,0.5fr] h-[70px] flex-row justify-center items-center text-center">
-              <img :src="category.image" class="object-fill w-[50px] h-[60px]">
+              <img :src="'https://sopheak.tysophearum.tech'+category.image" class="object-fill w-[50px] h-[60px]">
               <p class="text-start">{{ category.category_name }}</p>
               <p>+</p>
             </div>
@@ -53,7 +53,7 @@
 
           <div v-for="category in filteredMoreCategories" :key="category.id" @click="getProducts(category.id)" class="text-2xl">
             <div class="ml-2 cursor-pointer text-2xl text-gray-500 grid grid-cols-[1fr,1fr,0.5fr] h-[70px] flex-row justify-center items-center text-center">
-              <img :src="category.image" alt="black t-shirt"  class="object-fill w-[60px] h-[70px]">
+              <img :src="'https://sopheak.tysophearum.tech'+category.image" alt="black t-shirt"  class="object-fill w-[60px] h-[70px]">
               <p class="text-start">{{ category.category_name }}</p>
               <p>+</p>
             </div>
@@ -82,7 +82,7 @@
               <router-link :to="'/productDetail/'+[product.id]">
                 <div  class="flex w-[400px] h-[165px] border-solid border-2 rounded-lg items-center mr-7 mb-7">
                   <div class="m-5">
-                    <img :src="product.image" class="object-fit w-[100px] h-[130px]">
+                    <img :src="'https://sopheak.tysophearum.tech'+product.image" class="object-fit w-[100px] h-[130px]">
                   </div>
                   <div class="mx-5">
                     <h3 class="font-semibold text-xl mb-2.5">{{ product.product_name }}</h3>
@@ -136,8 +136,8 @@ import Footer from'@/components/Footer.vue'
 
     async mounted() {
       try {
-        const categoryResponse = await fetch("http://localhost:8000/api/categories");
-        const productResponse = await fetch("http://localhost:8000/api/products");
+        const categoryResponse = await fetch("https://sopheak.tysophearum.tech/api/categories");
+        const productResponse = await fetch("https://sopheak.tysophearum.tech/api/products");
 
         const categoryData = await categoryResponse.json();
         const productData = await productResponse.json();
@@ -154,7 +154,7 @@ import Footer from'@/components/Footer.vue'
     methods: {
       async listCategory() {
         try {
-          let url = "http://localhost:8000/api/categories";
+          let url = "https://sopheak.tysophearum.tech/api/categories";
 
           const response = await fetch(url);
           const category = await response.json();
@@ -166,14 +166,14 @@ import Footer from'@/components/Footer.vue'
       },
 
       async listProduct() {
-        const response = await fetch("http://localhost:8000/api/products");
+        const response = await fetch("https://sopheak.tysophearum.tech/api/products");
         const data = await response.json();
         this.product = data;
       },
 
       async getProducts(id) {
         try {
-          let url = `http://localhost:8000/api/categories/products/${id}`;
+          let url = `https://sopheak.tysophearum.tech/api/categories/products/${id}`;
 
           const response = await fetch(url);
           const data = await response.json();
@@ -190,7 +190,7 @@ import Footer from'@/components/Footer.vue'
     
 
     searchCategorys(category_name) {
-      const endpoint = 'http://localhost:8000/api/categories/search/{category_name}';
+      const endpoint = 'https://sopheak.tysophearum.tech/api/categories/search/{category_name}';
       const url = new URL(endpoint);
       url.searchParams.append('q', this.searchQuery);
 

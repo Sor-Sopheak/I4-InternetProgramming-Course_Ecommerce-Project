@@ -19,7 +19,7 @@
             <div v-for="cart in carts" class="rounded-lg mb-6 shadow-md bg-white p-6">
                 <div class="justify-between sm:flex sm:justify-start">
                     <img
-                    :src="cart.product.image"
+                    :src="'https://sopheak.tysophearum.tech'+cart.product.image"
                     alt="product-image"
                     class="w-full h-[150px] object-fit rounded-lg sm:w-40"
                     />
@@ -114,7 +114,7 @@ export default {
     methods: {
         updateQuantity(id, quantity) {
           if(quantity > 0) {
-            axios.put('http://localhost:8000/api/carts/'+id, {
+            axios.put('https://sopheak.tysophearum.tech/api/carts/'+id, {
               quantity: quantity
             }, {
               headers: {
@@ -127,7 +127,7 @@ export default {
           }
         },
         getCartProduct() {
-            axios.get('http://localhost:8000/api/carts/products/'+JSON.parse(localStorage.getItem('user')).id)
+            axios.get('https://sopheak.tysophearum.tech/api/carts/products/'+JSON.parse(localStorage.getItem('user')).id)
             .then(res => {
                 this.carts = res.data
                 let tmpTotal = 0
@@ -140,7 +140,7 @@ export default {
             })
         },
         deleteCart(id) {
-            axios.delete('http://localhost:8000/api/carts/'+id, {
+            axios.delete('https://sopheak.tysophearum.tech/api/carts/'+id, {
                 headers: {
                     Authorization: 'Bearer '+localStorage.getItem('token')
                 }

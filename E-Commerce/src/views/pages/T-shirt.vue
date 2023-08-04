@@ -50,7 +50,7 @@
 
                 <router-link :to="{ name: 'addtocart' }">
                   <img
-                    :src="product.image"
+                    :src="'https://sopheak.tysophearum.tech'+product.image"
                     alt=""
                     class="object-cover w-[300px] h-[250px] rounded-t-2xl"
                   />
@@ -336,7 +336,7 @@
   
     async mounted() {
       try {
-      const productResponse = await fetch("http://localhost:8000/api/products");
+      const productResponse = await fetch("https://sopheak.tysophearum.tech/api/products");
       const data = await productResponse.json();
 
       this.products = data;
@@ -348,7 +348,7 @@
     methods: {
         async listTshirt() {
             try {
-                let url = "http://localhost:8000/api/products";
+                let url = "https://sopheak.tysophearum.tech/api/products";
 
                 const response = await fetch(url);
                 const product = await response.json();

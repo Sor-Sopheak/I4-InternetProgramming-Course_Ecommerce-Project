@@ -92,8 +92,8 @@
 
         async mounted() {
             try{
-                const categoryResponse = await fetch("http://localhost:8000/api/categories");
-                const productResponse = await fetch("http://localhost:8000/api/products");
+                const categoryResponse = await fetch("https://sopheak.tysophearum.tech/api/categories");
+                const productResponse = await fetch("https://sopheak.tysophearum.tech/api/products");
                 
                 const categoryData = await categoryResponse.json();
                 const productData = await productResponse.json();

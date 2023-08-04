@@ -56,7 +56,7 @@
                 class="w-[280px] h-[420px] relative parent-container border-2 rounded-2xl m-3">
                 <router-link :to="'/productDetail/'+[product.id]">
                   <img
-                    :src="product.image"
+                    :src="'https://sopheak.tysophearum.tech'+product.image"
                     alt=""
                     class="object-contain w-[280px] h-[300px] rounded-t-2xl"
                   />
@@ -119,8 +119,8 @@ export default {
 
   async mounted() {
     try {
-        const categoryResponse = await fetch("http://localhost:8000/api/categories");
-        const productResponse = await fetch("http://localhost:8000/api/products");
+        const categoryResponse = await fetch("https://sopheak.tysophearum.tech/api/categories");
+        const productResponse = await fetch("https://sopheak.tysophearum.tech/api/products");
         
         const categoryData = await categoryResponse.json();
         const productData = await productResponse.json();
@@ -139,7 +139,7 @@ export default {
     },
     async getProducts(id) {
         try {
-          let url = `http://localhost:8000/api/categories/products/${id}`;
+          let url = `https://sopheak.tysophearum.tech/api/categories/products/${id}`;
   
           const response = await fetch(url);
           const data= await response.json();

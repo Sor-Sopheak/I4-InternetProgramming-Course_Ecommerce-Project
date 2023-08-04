@@ -18,7 +18,7 @@
                 class="flex justify-center items-center border-[1px] h-[350px] border-orange-600 mx-12"
             >
                 <img v-if="product != ''"
-                :src="product.product_images[index].image"
+                :src="'https://sopheak.tysophearum.tech'+product.product_images[index].image"
                 alt=""
                 class="w-[300px] h-[300px] object-contain"
                 />
@@ -32,7 +32,7 @@
                 class="flex flex-row m-2"
                 >
                 <img
-                    :src="productImage.image"
+                    :src="'https://sopheak.tysophearum.tech'+productImage.image"
                     @click="change(index)"
                     alt=""
                     class="w-[110px] h-[120px] object-contain cursor-pointer"
@@ -162,7 +162,7 @@
                 <button @click="changeProduct(product.id)" class="border-2 border-gray-500 h-[210px] w-[170px] p-4 mr-8">
                 <img
                 
-                    :src="product.image"
+                    :src="'https://sopheak.tysophearum.tech'+product.image"
                     alt=""
                     class="w-[150px] h-[130px] object-fit"
                 />
@@ -237,8 +237,8 @@ export default {
         },
 
         async getProduct(id) {
-            // const response = await fetch(`http://localhost:8000/api/products/${this.$route.params.id}`);
-            const response = await fetch(`http://localhost:8000/api/products/${id}`);
+            // const response = await fetch(`https://sopheak.tysophearum.tech/api/products/${this.$route.params.id}`);
+            const response = await fetch(`https://sopheak.tysophearum.tech/api/products/${id}`);
             const data = await response.json();
             this.product = data;
             console.log(this.product);
@@ -246,7 +246,7 @@ export default {
 
         async getCategory(id) {
         try {
-            const response = await fetch(`http://localhost:8000/api/categories/products/${id}`);
+            const response = await fetch(`https://sopheak.tysophearum.tech/api/categories/products/${id}`);
             const data = await response.json();
             this.categories = data;
         } catch (error) {
@@ -255,13 +255,13 @@ export default {
         },
 
         async listInterestedProduct() {
-            const response = await fetch(`http://localhost:8000/api/products`);
+            const response = await fetch(`https://sopheak.tysophearum.tech/api/products`);
             const data = await response.json();
             this.productList = data;
         },
         
         addToCart() {
-            axios.post("http://localhost:8000/api/carts",{
+            axios.post("https://sopheak.tysophearum.tech/api/carts",{
                 user_id: JSON.parse(localStorage.getItem("user")).id,
                 product_id: this.$route.params.id,
                 size_id: this.$route.params.id,
@@ -295,7 +295,7 @@ export default {
         },
 
         async listSize() {
-        const res = await fetch('http://localhost:8000/api/sizes', {
+        const res = await fetch('https://sopheak.tysophearum.tech/api/sizes', {
             method: "GET",
             headers: {
             "Content-type": "application/json",

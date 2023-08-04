@@ -148,7 +148,7 @@
                 <div class="grid grid-cols-4 grid-flow-row">
                   <div v-for="product in products" class="mx-2.5 mb-12 shadow-lg">
                     <router-link :to="'/productDetail/'+[product.id]">
-                      <img :src="product.image" alt="" class="object-cover w-[220px] h-[350px]">
+                      <img :src="'https://sopheak.tysophearum.tech'+product.image" alt="" class="object-cover w-[220px] h-[350px]">
                     </router-link>
                     <div class="text-start mt-4 m-2">
                       <p class="font-semibold">{{ product.product_name }}</p>
@@ -195,7 +195,7 @@
       methods: {
         async fetchAllProducts() {
           try {
-            const productResponse = await fetch("http://localhost:8000/api/products");
+            const productResponse = await fetch("https://sopheak.tysophearum.tech/api/products");
 
             const productData = await productResponse.json();
             this.products = productData;
@@ -205,7 +205,7 @@
         },
 
         fetchType(type) {
-          axios.get('http://localhost:8000/api/products/type/'+type)
+          axios.get('https://sopheak.tysophearum.tech/api/products/type/'+type)
           .then(res => {
             this.products = res.data
           })

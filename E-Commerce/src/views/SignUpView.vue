@@ -150,7 +150,7 @@ export default {
 
       console.log("Request data:", data);
 
-      await fetch("http://localhost:8000/api/signup", {
+      await fetch("https://sopheak.tysophearum.tech/api/signup", {
         method: "POST",
         headers: {
           Accept: "application/json",

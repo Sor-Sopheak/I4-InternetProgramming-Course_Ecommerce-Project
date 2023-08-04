@@ -15,7 +15,7 @@
                     <div v-for="(cart, index) in carts" :key="index" class="w-full flex flex-col mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
                         <div class="w-full flex items-center">
                             <div class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
-                                <img :src="cart.product.image" alt="">
+                                <img :src="'https://sopheak.tysophearum.tech'+cart.product.image" alt="">
                             </div>
                             <div class="flex-grow pl-3">
                                 <h6 class="font-semibold uppercase text-gray-600">{{ cart.product.product_name }}</h6>
@@ -152,7 +152,7 @@ export default {
 
         checkout(){
             const user = JSON.parse(localStorage.getItem('user'))
-            axios.delete('http://localhost:8000/api/carts/clear/'+user.id, {
+            axios.delete('https://sopheak.tysophearum.tech/api/carts/clear/'+user.id, {
                 headers: {
                     Authorization: 'Bearer '+localStorage.getItem('token')
                 }
@@ -163,7 +163,7 @@ export default {
         },
         getCartProduct() {
             const userId = JSON.parse(localStorage.getItem('user')).id;
-            axios.get('http://localhost:8000/api/carts/products/' + userId)
+            axios.get('https://sopheak.tysophearum.tech/api/carts/products/' + userId)
             .then(res => {
                 this.carts = res.data;
                 this.calculateSubtotal();
