@@ -5,7 +5,7 @@
         <div class="relative">
           <img src="@/assets/images/bgimg3.png" alt="" class="object-cover w-[100%] h-[300px] opacity-75">
           <div class="absolute p-2 bg-white flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-[#a6a6a6]">
-            <img src="@/assets/images/aboutmegirl1.jpg" alt="" class="object-cover h-[350px] w-[350px] pr-5">
+            <img src="@/assets/images/aboutusimg.jpg" alt="" class="object-cover h-[350px] w-[350px] pr-5">
             <div class="py-10 pr-12">
               <p class="pb-6">Hello</p>
               <p class="pb-6">Welcome to our About Us page!</p>
@@ -30,7 +30,7 @@
           <div class="mt-6 w-[55%] flex text-left">
             <p class="text-7xl">L</p>
             <p class="pt-2 pl-3 text-[#6a6a6a]">
-              Our approach is simple: we understand your needs, meticulously plan and implement, striving for excellence at every step. Trust [Your Company Name] for success, and experience a seamless journey towards achieving your goals.
+              Our approach is simple: we understand your needs, meticulously plan and implement, striving for excellence at every step. Trust <span class="underline"> StyleMingle</span> for success, and experience a seamless journey towards achieving your goals.
             </p>
           </div>
           <div class="w-[55%] mt-12">
@@ -44,7 +44,7 @@
               <p>Hassle-Free</p>
             </div>
             <div class="flex flex-col-2 bg-[#eeeae9] mt-10 h-[200px]">
-              <img src="@/assets/images/aboutme5.jpg" alt="" class="object-contain w-[350px] h-[200px]">
+              <img src="@/assets/images/aboutus2.jpg" alt="" class="object-contain w-[350px] h-[200px]">
               <div class="text-left p-10">
                 <p class="font-bold text-lg pb-5">KEEP IN TOUCH FOR THE GOOD STUFF</p>
                 <p class="text-[#6a6a6a]">

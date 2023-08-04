@@ -15,10 +15,16 @@
             <div class="clr"></div>
         </div>
     </section>
+    <div class="w-[100%] h-px bg-gray-300 mt-28"></div>
+    <Footer />
 </template>
 <script>
+import Footer from "@/components/Footer.vue";
+
 export default {
-    name: "ThankYou"
+    name: "ThankYou",
+
+     components: { Footer },  
 }
 </script>
 <style>
@@ -51,7 +57,7 @@ export default {
   display:block;
   text-decoration:none;
   width:250px;
-  background:#E47425;
+  background:#F96700;
   margin:10px auto 0px;
   padding:15px 20px 15px;
   border-bottom:5px solid #F96700;
@@ -63,9 +69,9 @@ export default {
   display:block;
   text-decoration:none;
   width:250px;
-  background:#F96700;
+  background:#000000;
   margin:10px auto 0px;
   padding:15px 20px 15px;
-  border-bottom:5px solid #F96700;
+  border-bottom:5px solid #000000;
 }
 </style>

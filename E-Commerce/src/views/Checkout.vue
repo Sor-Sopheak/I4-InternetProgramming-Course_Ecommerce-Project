@@ -80,28 +80,28 @@
                             <div class="mb-5">
                                 <label for="type1" class="flex items-center cursor-pointer">
                                     <router-link :to="{ name: 'visa' }" class="flex">
-                                        <input type="radio" class="mr-5 form-radio h-5 w-5 text-orange-600" name="type" id="type1" checked>
+                                        <input type="radio" class="mr-5 form-radio h-5 w-5 hover:text-indigo-600 focus:text-orange-600" name="type" id="type1" @click="handleInputChange('type1')" :checked="selectedInput === 'type1'">
                                         <img src="@/assets/images/Visalogo.png" alt="" class="w-[70px] h-[30px]">
                                     </router-link>
                                 </label>
                                 <hr class="my-5">
-                                <label for="type1" class="flex items-center cursor-pointer">
+                                <label for="type2" class="flex items-center cursor-pointer">
                                     <router-link :to="{ name: 'master' }" class="flex">
-                                        <input type="radio" class="mr-5 form-radio h-5 w-5 text-orange-600" name="type" id="type2" checked>
+                                        <input type="radio" class="mr-5 form-radio h-5 w-5 hover:text-indigo-600 focus:text-orange-600" name="type" id="type2" @click="handleInputChange('type2')" :checked="selectedInput === 'type2'">
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png" alt="instagram icon" class="w-[50px] h-[30px]">
                                     </router-link>
                                 </label>
                                 <hr class="my-5">
-                                <label for="type1" class="flex items-center cursor-pointer">
+                                <label for="type3" class="flex items-center cursor-pointer">
                                     <router-link :to="{ name: 'americanexpress' }" class="flex">
-                                        <input type="radio" class="mr-5 form-radio h-5 w-5 text-orange-600" name="type" id="type3" checked>
+                                        <input type="radio" class="mr-5 form-radio h-5 w-5 hover:text-indigo-600 focus:text-orange-600" name="type" id="type3" @click="handleInputChange('type3')"  :checked="selectedInput === 'type3'">
                                         <img src="https://logodix.com/logo/61114.jpg" alt="line icon" class="w-[50px] h-[30px]">
                                     </router-link>
                                 </label>
                                 <hr class="my-5">
-                                <label for="type1" class="flex items-center cursor-pointer">
+                                <label for="type4" class="flex items-center cursor-pointer">
                                     <router-link :to="{ name: 'paypal' }" class="flex">
-                                        <input type="radio" class="mr-5 form-radio h-5 w-5 text-orange-600" name="type" id="type4" checked>
+                                        <input type="radio" class="mr-5 form-radio h-5 w-5 hover:text-indigo-600 focus:text-orange-600" name="type" id="type4" @click="handleInputChange('type4')" :checked="selectedInput === 'type4'">
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80" class="ml-3"/>
                                     </router-link>
                                 </label>
@@ -115,6 +115,9 @@
             </div>
         </div>
     </div>
+
+    <div class="w-[100%] h-px bg-gray-300 mt-28"></div>
+    <Footer />
 </div>
 
 </template>
@@ -135,6 +138,7 @@ export default {
             shippingEst: 5,
             subtotal: 0,
             carts: [],
+            selectedInput: 'type1'
         }
     },  
     mounted() {
@@ -142,6 +146,10 @@ export default {
         this.getAddressShipping();
     },
     methods: {
+        handleInputChange(id) {
+          this.selectedInput = id;
+        },
+
         checkout(){
             const user = JSON.parse(localStorage.getItem('user'))
             axios.delete('http://localhost:8000/api/carts/clear/'+user.id, {
@@ -200,3 +208,13 @@ export default {
     },
 };
 </script>
+
+<style>
+    label.flex.cursor-pointer {
+      color: #000;
+    }
+
+    input[type="radio"]:checked + label.flex.cursor-pointer {
+      color: #ff5900;
+    }
+  </style>

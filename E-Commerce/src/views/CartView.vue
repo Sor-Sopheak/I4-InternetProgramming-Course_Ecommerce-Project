@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <router-link to="/productDetail/1">
+    <router-link to="/">
       <h1 class="mb-10 ml-20 text-5xl pt-5 hover:text-orange-600">&lt; My Cart</h1>
     </router-link>
     <div class="mx-20 max-w-11/12 justify-between md:flex md:space-x-6 xl:px-0">
@@ -87,6 +87,7 @@
       </div>
     </div>
 
+    <div class="w-[100%] h-px bg-gray-300 mt-28"></div>
     <Footer />
   </div>
 </template>

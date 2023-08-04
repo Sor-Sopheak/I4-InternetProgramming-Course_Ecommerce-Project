@@ -54,7 +54,7 @@
                 <input type="text" placeholder="Your Name" class="bg-white rounded-full outline-none h-[30px] w-[150px] text-sm px-2">
                 <input type="email" placeholder="Your Email" class="bg-white rounded-full outline-none h-[30px] w-[150px] text-sm px-2">
               </div>
-              <button class="w-[100%] h-[30px] bg-black text-white text-sm rounded-full mt-4">SUBMIT</button>
+              <button class="w-[100%] h-[30px] hover:bg-white hover:text-black bg-black text-white text-sm rounded-full mt-4">SUBMIT</button>
             </div>
           </div>
 
