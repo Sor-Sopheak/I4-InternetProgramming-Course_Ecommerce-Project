@@ -1,15 +1,15 @@
 <template>
   <div class="w-screen m-0 p-0" v-if="categories != null">
     <div>
-        <div class="bg-green-200 w-64 mt-4 ml-12 rounded">
+        <!-- <div class="bg-green-200 w-64 mt-4 ml-12 rounded">
             <p class="text-green-700 px-2">50% OFF ENDS TOMORROW</p>
-        </div>
-        <div class="ml-12 mt-2 flex">
-            <router-link :to="{ name: 'home' }" class="hover:text-orange-600">Home</router-link>
+        </div> -->
+        <div class="ml-12 mt-4 flex">
+            <router-link :to="{ name: 'home' }" class="hover:text-orange-600 hover:underline">Home</router-link>
             <p>&nbsp>&nbsp</p>
-            <router-link :to="{ name: 'category' }" class="hover:text-orange-600">Category</router-link>
+            <router-link :to="{ name: 'category' }" class="hover:underline text-gray-500">Category</router-link>
             <p>&nbsp>&nbsp</p>
-            <p>{{ categories.category_name }}</p>
+            <p class="text-gray-500">{{ categories.category_name }}</p>
         </div>
 
         <div class="grid grid-cols-2 mx-12 mt-6">
@@ -85,10 +85,6 @@
                         <img v-if="isShowingSizeGuide" src="https://cdn11.bigcommerce.com/s-fykcc646/product_images/uploaded_images/size-chart.png" alt="" class="w-11/12"/>
                     </div>
 
-                    <div class="flex flex-end hover:underline hover:text-orange-600 bg-white shadow-lg rounded-full p-1 mr-4 w-[80px] h-[35px]">
-                        <img src="@/assets/images/heart-wishlist.svg" alt="" class="w-[30px] heart-icon"/>
-                        <img src="@/assets/images/Love_Heart_SVG.svg.png" alt="" class="w-[30px] heart-icon hidden"/>
-                    </div>
                 </div>
                 <div class="text-sm mt-12">
                     <p class="text-xl mb-5 font-semibold">DESCRIPTION</p>
@@ -175,9 +171,11 @@
                     <p>${{ product.price }}</p>
                 </div>
                 <div class="flex justify-center items-center mt-2">
-                    <button class="bg-orange-600 rounded text-white w-[60px]">
-                    BUY
-                    </button>
+                    <router-link :to="'/productDetail/'+[product.id]">
+                        <button class="bg-orange-600 rounded text-white w-[60px]">
+                            BUY
+                        </button>
+                    </router-link>
                 </div>
                 </button>
             </div>
@@ -185,6 +183,7 @@
         </div>
     </div>
 
+    <div class="w-[100%] h-px bg-gray-300 mt-28"></div>
     <Footer />
   </div>
 </template>
@@ -275,7 +274,7 @@ export default {
                 },
             })
             .then((res) => {
-                this.$router.push({ name: 'cart' });
+                this.$router.push({name: 'cart'});
             });
         },
 
@@ -307,9 +306,6 @@ export default {
             this.sizes = await result;
             console.log(result);
         },
-        // toggleSizeGuide() {
-        //     this.showSizeGuide = !this.showSizeGuide;
-        // },
     },
 };
 </script>

@@ -36,7 +36,7 @@
           </div>
 
           <div class="flex-grow h-px bg-gray-400 m-5"></div> 
-          <div class="flex flex-col mx-5 font-jaldi text-2xl">
+          <!-- <div class="flex flex-col mx-5 font-jaldi text-2xl">
             <div class="text-gray-500 flex justify-between">
               <p>Outdoor</p>
               <p>23</p>
@@ -49,10 +49,10 @@
               <p>Party</p>
               <p>51</p>
             </div>
-          </div>
+          </div> -->
 
-          <div v-for="category in filteredMoreCategories" :key="category.id" class="text-2xl">
-            <div class="ml-2 text-2xl text-gray-500 grid grid-cols-[1fr,1fr,0.5fr] h-[70px] flex-row justify-center items-center text-center">
+          <div v-for="category in filteredMoreCategories" :key="category.id" @click="getProducts(category.id)" class="text-2xl">
+            <div class="ml-2 cursor-pointer text-2xl text-gray-500 grid grid-cols-[1fr,1fr,0.5fr] h-[70px] flex-row justify-center items-center text-center">
               <img :src="category.image" alt="black t-shirt"  class="object-fill w-[60px] h-[70px]">
               <p class="text-start">{{ category.category_name }}</p>
               <p>+</p>
@@ -82,14 +82,14 @@
               <router-link :to="'/productDetail/'+[product.id]">
                 <div  class="flex w-[400px] h-[165px] border-solid border-2 rounded-lg items-center mr-7 mb-7">
                   <div class="m-5">
-                    <img :src="product.image" alt="black t-shirt" class="object-fill w-[100px] h-[130px]">
+                    <img :src="product.image" class="object-fit w-[100px] h-[130px]">
                   </div>
                   <div class="mx-5">
                     <h3 class="font-semibold text-xl mb-2.5">{{ product.product_name }}</h3>
                     <p class="text-gray-500 mb-2.5 text-xl">{{ product.product_type }}</p>
-                    <div class="flex justify-between w-[150px] text-xl">
+                    <div class="flex justify-between w-[150px] text-xl">      
+                      <p class="text-gray-500">Price</p>
                       <p class="text-green-700 font-bold">${{ product.price }}</p>
-                      <p class="text-gray-500 line-through">$12.00</p>
                     </div>
                   </div>
                 </div>
@@ -114,7 +114,6 @@ import Footer from'@/components/Footer.vue'
   export default {
     components : { NavbarGuest, NavbarUser, Footer },
 
-    //click nav change color 
     data() {
       return {
         products: [],
@@ -127,7 +126,6 @@ import Footer from'@/components/Footer.vue'
 
     computed: {
       filtered3Categories() {
-        // Return the first three categories from the categories array
         return this.categories.slice(0, 3);
       },
 
@@ -149,7 +147,7 @@ import Footer from'@/components/Footer.vue'
 
 
       } catch (error) {
-        console.error("Error fetching categories", error);
+        console.log("Error fetching categories", error);
       }
     },
 
@@ -192,9 +190,7 @@ import Footer from'@/components/Footer.vue'
     
 
     searchCategorys(category_name) {
-      const endpoint = 'http://localhost:8000/api/categories/search/{category_name}'; // Update the endpoint accordingly
-
-      // Construct the URL with the search query as a query parameter
+      const endpoint = 'http://localhost:8000/api/categories/search/{category_name}';
       const url = new URL(endpoint);
       url.searchParams.append('q', this.searchQuery);
 

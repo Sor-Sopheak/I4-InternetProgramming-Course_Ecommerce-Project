@@ -1,19 +1,17 @@
 <template>
-  <div class="w-screen">
+  <div>
     <section>
       <div>
         <div class="grid grid-cols-[0.2fr,1fr]">
-          <div class="border-2 border-gray-300 text-start">
+          <div class="border-2 border-gray-300 text-start pr-12">
             <p class="font-semibold text-xl mt-5 ml-4">Category</p>
             <div class="w-[90%] m-2 ml-20">
               <div v-for="category in categories" :key="category.id" @click="handleCategoryClick(category.id)">
-                <p class="cursor-pointer" :class="{'text-orange-600': selectedCategoryId === category.id}">{{ category.category_name }}</p>
+                <p class="cursor-pointer hover:text-orange-600" :class="{'text-orange-600': selectedCategoryId === category.id}">{{ category.category_name }}</p>
               </div>
             </div>
           </div>
 
-
-          <!-- search -->
           <div>
             <div class="h-[40px] w-[35%] border-solid border-orange-600 border-2 rounded-full flex items-center justify-between m-5">
               <div @click="focusInput" class="flex justify-center items-center px-2">
@@ -33,9 +31,9 @@
             <div class="w-[100%] h-px bg-gray-300 my-8"></div>
 
             <div class="flex p-5">
-              <router-link :to="{ name: 'home' }">Home</router-link>
+              <router-link :to="{ name: 'home' }" class="hover:text-orange-600 hover:underline">Home</router-link>
               <span class="mx-2">></span>
-              <router-link :to="{ name: 'category' }" class="text-[#6e6d6d]"
+              <router-link :to="{ name: 'category' }" class="text-[#6e6d6d] hover:underline"
                 >Category</router-link
               >
               <span class="mx-2">></span>
@@ -53,31 +51,19 @@
             </div>
             
 
-            <div class="grid grid-rows-2 grid-flow-col mx-14 overflow-x-scroll">
+            <div class="grid grid-rows-2 grid-flow-col mx-14 overflow-x-auto w-[70%]">
               <div v-for="product in products" :key="product.id"
-                class="w-[300px] h-[420px] relative parent-container border-2 rounded-2xl m-3">
+                class="w-[280px] h-[420px] relative parent-container border-2 rounded-2xl m-3">
                 <router-link :to="'/productDetail/'+[product.id]">
                   <img
                     :src="product.image"
                     alt=""
-                    class="object-fit w-[300px] h-[300px] rounded-t-2xl"
+                    class="object-contain w-[280px] h-[300px] rounded-t-2xl"
                   />
                 </router-link>
                 <div
                   class="absolute flex justify-between w-[260px] top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 >
-                  <p
-                    class="bg-orange-100 h-[30px] w-[50px] py-1 text-center text-sm text-orange-600 rounded-lg"
-                  >
-                    NEW
-                  </p>
-                  <div>
-                    <img
-                      src="https://www.transparentpng.com/thumb/instagram-heart/OtpLVC-heart-shaped-instagram-transparent-image.png"
-                      alt=""
-                      class="w-[30px]"
-                    />
-                  </div>
                 </div>
                 <div class="p-4">
                   <p class="font-bold">{{ product.product_name }}</p>
@@ -89,11 +75,14 @@
                     <button
                       class="bg-orange-600 p-1.5 h-[30px] w-[35px] rounded-lg"
                     >
+                    <router-link :to="'/productDetail/'+[product.id]">
                       <img
                         src="https://icon-library.com/images/white-shopping-cart-icon/white-shopping-cart-icon-9.jpg"
                         alt=""
                         class="w-[20px]"
                       />
+                    </router-link>
+                      
                     </button>
                   </div>
                 </div>

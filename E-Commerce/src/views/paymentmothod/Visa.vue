@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex justify-center items-center">
-        <div class="w-1/3 border-2 px-12 flex flex-col justify-center items-center mt-10 shadow-2xl shadow-gray-300">
+        <div @submit.prevent="payByVisa" class="w-1/3 border-2 px-12 flex flex-col justify-center items-center mt-6 shadow-2xl shadow-gray-300">
           <router-link :to="{ name: 'checkout' }" class="flex self-end pt-4 text-red-600 cursor-pointer">
             <p>X</p>    
           </router-link>
@@ -21,28 +21,31 @@
                     <img src="https://sm.pcmag.com/pcmag_uk/review/p/paypal/paypal_kzfp.png" class="w-[50px] h-[30px] mr-5">
                 </router-link>
             </div>
-        <div class="w-full items-center">
-            <div>
-                <label>Card number</label>
-                <input required type="text" maxlength="16" placeholder="0000 0000 0000 0000" class="w-full rounded-sm h-[35px] mb-4">
-            </div>
-            <div>
-                <p>Name on card</p>
-                <input required type="text" class="w-full h-[35px] rounded-sm mb-4" placeholder="Sor Sopheak">
-            </div>
-            <div class="flex justify-between">
-                <div class="">
-                    <p>Expiry date</p>
-                    <input required type="text" placeholder="01/08" class="w-[140px] h-[35px] mb-4 rounded-sm">
-                </div>
-                <div class="">
-                    <p>CVV</p>
-                    <input required type="text" maxlength="3" placeholder="123" class="w-[140px] h-[35px] rounded-sm mb-4">
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="w-full h-[40px] bg-blue-500 rounded-md text-white mt-2 mb-8">Pay now</button>
-       </div>
+        <form @submit.prevent="payByVisa">
+          <div class="w-full items-center">
+              <div>
+                  <label>Card number</label>
+                  <input v-model="card_number" required type="text" maxlength="16" placeholder="0000 0000 0000 0000" class="w-full rounded-sm h-[35px] mb-4">
+              </div>
+              <div>
+                  <p>Name on card</p>
+                  <input v-model="name_on_card" required type="text" class="w-full h-[35px] rounded-sm mb-4" placeholder="Sor Sopheak">
+              </div>
+              <div class="flex justify-between">
+                  <div class="">
+                      <p>Expiry date</p>
+                      <input v-model="expiry_date" required type="text" placeholder="01/08" class="w-[140px] h-[35px] mb-4 rounded-sm">
+                  </div>
+                  <div>
+                      <p>CVV</p>
+                      <input v-model="cvv" required type="text" maxlength="3" placeholder="123" class="w-[140px] h-[35px] rounded-sm mb-4">
+                  </div>
+                  <input v-model="payment_method_id" required class="hidden">
+              </div>
+          </div>
+          <button type="submit" class="w-full h-[40px] bg-blue-500 rounded-md text-white mt-2 mb-8">Pay now</button>
+        </form>
+      </div>
     </div>
 </template>
 
@@ -51,17 +54,12 @@
   export default {
     data() {
       return {
+        payment_method_id: 1,
         name_on_card: '',
         card_number: '',
-        expiry_date: {
-          month: '',
-          year: '',
-        },
+        expiry_date: '',
         cvv: '',
-        // card: 'front',
       };
-    },
-    mounted() {
     },
 
     computed: {
@@ -78,7 +76,7 @@
         if (this.card_number === '') {
           return false;
         }
-        if (this.expired.month === '' && this.expired.year === '') {
+        if (this.expiry_date === '') {
           return false;
         }
         if (this.cvv.length !== 3) {
@@ -93,15 +91,23 @@
       },
 
       async payByVisa() {
+
         const data = {
+          payment_method_id: this.payment_method_id,
           name_on_card: this.name_on_card,
           card_number: this.card_number,
-          // expiry_date: {
-          //   this.year,
-          //   this.month
-          // }
+          expiry_date: this.expiry_date,
+          cvv: this.cvv,
 
-        }
+        };
+
+        localStorage.setItem("Payment Method", JSON.stringify(data));
+          this.payment_method_id = "",
+          this.name_on_card = "",
+          this.card_number = "",
+          this.expiry_date = "",
+          this.cvv = "",
+          this.$router.push({ name: 'checkout' })
       }
     },
   };

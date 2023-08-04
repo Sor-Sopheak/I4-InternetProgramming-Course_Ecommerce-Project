@@ -23,9 +23,13 @@
               </div>
               <div class="grid grid-cols-[0.5fr,1fr]">
                 <div class="px-2">
-                  <p class="text-[#4b372f] mt-8 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi reiciendis ipsam perspiciatis atque quo, magni et commodi.</p>
-                  <button class="font-semibold bg-black text-white text-sm h-[40px] w-[110px] text-center flex items-center justify-center rounded-3xl">SHOP NOW</button>
-                </div>
+                  <p class="text-[#4b372f] mt-8 mb-4">
+                    Discover a curated collection of stylish garments that embrace elegance and sustainability. Express your unique style and make a lasting impression with our versatile fashion choices.
+                  </p>
+                  <router-link :to="{ name: 'category' }">
+                    <button class="font-semibold hover:bg-white hover:text-black bg-black text-white text-sm h-[40px] w-[130px] text-center flex items-center justify-center rounded-3xl">EXLPORE NOW</button>
+                  </router-link>
+                  </div>
                 <div class="font-jetbrains-mono grid grid-cols-[0.61fr,1fr] bg-black">
                   <img src="@/assets/images/iu.jpg" alt="" class="object-contain h-[350px] w-[250px]">
                   <div class="text-white p-5 h-[350px]">
@@ -33,26 +37,26 @@
                     <p class="text-[#b2b2b2]">Black long sleeve</p>
                     <div class="flex justify-between">
                       <div class="flex justify-between w-[100px]">
-                        <p class="line-through">$128</p>
-                        <p class="text-xl font-bold">$180</p>
+                        <p class="line-through">$180</p>
+                        <p class="text-xl font-bold">$128</p>
                       </div>
-                      <button class="bg-white text-black text-xs h-[30px] w-[90px] text-center flex items-center justify-center rounded-3xl">SHOP NOW</button>
+                      <button class="bg-white hover:text-white hover:bg-black hover:border-white hover:border-2 text-black text-xs h-[30px] w-[90px] text-center flex items-center justify-center rounded-3xl">SHOP NOW</button>
                     </div>
                     <div class="flex justify-between mt-8">
                       <div class="bg-white text-black w-[90px] text-center p-2 rounded-xl">
                         <p class="text-5xl">09</p>
-                        <p class="text-sm text-[#666666]">Hello</p>
-                        <p>jkasdjfa</p>
+                        <p class="text-sm text-[#666666]">Best</p>
+                        <p>Diverse</p>
                       </div>
                       <div class="bg-white text-black w-[90px] text-center p-2 rounded-xl">
                         <p class="text-5xl">09</p>
-                        <p class="text-sm text-[#666666]">Hello</p>
-                        <p>jkasdjfa</p>
+                        <p class="text-sm text-[#666666]">Offer</p>
+                        <p>Hassle</p>
                       </div>
                       <div class="bg-white text-black w-[90px] text-center p-2 rounded-xl">
                         <p class="text-5xl">09</p>
-                        <p class="text-sm text-[#666666]">Hello</p>
-                        <p>jkasdjfa</p>
+                        <p class="text-sm text-[#666666]">For You</p>
+                        <p>Personal</p>
                       </div>
                     </div>
                   </div>
@@ -66,16 +70,7 @@
 
         <section>
           <div>
-            <div class="flex justify-center text-center m-5 font-semibold text-xl">
-              <a href="#" class="p-4 underline">All</a>
-              <a href="#" class="p-4">Springtime</a>
-              <a href="#" class="p-4">Spring Shower</a>
-              <a href="#" class="p-4">Spring Layers</a>
-              <a href="#" class="p-4">Spring Wind</a>
-              <a href="#" class="p-4">Spring Chill</a>
-            </div>
-
-            <div class="flex justify-center items-center mt-8">
+            <div class="flex justify-center items-center mt-24">
               <div class="grid grid-cols-[1fr,1.7fr,1fr] w-[90%]">
                 <div class="grid grid-rows-[0.66fr,0.5fr]">
                   <div class="relative">
@@ -95,17 +90,21 @@
                   <div class="absolute top-1/4 left-1/2 transform -translate-x-1/2 translate-y-1/2">
                     <p class="text-sm text-[#4a4a49]">Explore yourself</p>
                     <p class="font-bold text-xl w-[70%]">YOU LOOK GOOD WITH YOUR STYLE</p>
-                    <button class="bg-black h-[30px] text-sm px-3 rounded-2xl text-white">SHOP NOW</button>
-                  </div>
+                    <router-link :to="{ name: 'category' }">
+                      <button class="hover:text-black hover:bg-white bg-black h-[30px] text-sm px-3 rounded-2xl text-white">SHOP NOW</button>
+                    </router-link>
+                    </div>
                 </div>
                 <div class="grid grid-rows-[0.66fr,0.5fr] gap-4">
                   <div class="relative">
-                    <img src="@/assets/images/milkjacket.jpg" alt="" class="object-cover w-[100%] h-[280px]">
+                    <img src="@/assets/images/denim_jacket1.jpg" alt="" class="object-cover w-[100%] h-[280px]">
                     <div class="absolute top-1/4 left-1/2 transform -translate-x-1/2 translate-y-1/2">
                       <p>Women Denim Jacket</p>
                       <p class="font-bold">CREATE YOUR FASHION WITH US</p>
-                      <button class="bg-black h-[30px] text-sm px-3 rounded-2xl text-white">SHOP NOW</button>
-                    </div>
+                      <router-link :to="{ name: 'category' }">
+                        <button class="hover:text-black hover:bg-white bg-black h-[30px] text-sm px-3 rounded-2xl text-white">SHOP NOW</button>
+                      </router-link>
+                      </div>
                   </div>
                   <div class="relative">
                     <img src="@/assets/images/glass.jpg" alt="" class="object-cover w-[100%] h-[305px]">
@@ -120,7 +119,7 @@
               <div>
                 <p class="text-xl text-shadow">WE OFFER BRAND NEW STYLES</p>
                 <p>Let's us explore your style</p>
-                <button class="text-black text-xs h-[25px] bg-white px-3 rounded-2xl mt-5 shadow-md">SEE FULL COLLECTION</button>
+                <button @click="fetchAllProducts" class="hover:text-white hover:bg-black text-black text-xs h-[25px] bg-white px-3 rounded-2xl mt-5 shadow-md">SEE FULL COLLECTION</button>
               </div> 
             </div>
 
@@ -132,37 +131,35 @@
               <div class="flex">
                 <div class="m-3 relative h-[400px]">
                   <img src="@/assets/images/office.jpg" alt="" class="object-cover w-[300px] h-[400px]">
-                  <!-- router-link to category -->
-                  <button @click="fetchType('office')" class="absolute bg-black text-white text-xs px-4 h-[30px] w-[90px] rounded-2xl bottom-12 left-1/2 transform -translate-x-1/2 translate-y-1/2">OFFICE</button>
+                  <button @click="fetchType('office')" class="absolute hover:bg-white hover:text-black bg-black text-white text-xs px-4 h-[30px] w-[90px] rounded-2xl bottom-12 left-1/2 transform -translate-x-1/2 translate-y-1/2">OFFICE</button>
                 </div>
                 <div class="m-3 relative h-[400px]">
                   <img src="@/assets/images/party.jpg" alt="" class="object-cover w-[300px] h-[400px]">
-                  <button @click="fetchType('party')" class="absolute bg-black text-white text-xs px-4 h-[30px] w-[90px] rounded-2xl bottom-12 left-1/2 transform -translate-x-1/2 translate-y-1/2">Party</button>
+                  <button @click="fetchType('party')" class="absolute hover:bg-white hover:text-black bg-black text-white text-xs px-4 h-[30px] w-[90px] rounded-2xl bottom-12 left-1/2 transform -translate-x-1/2 translate-y-1/2">PARTY</button>
                 </div>
                 <div class="m-3 relative h-[400px]">
                   <img src="@/assets/images/outdoor.jpg" alt="" class="object-cover w-[300px] h-[400px]">
-                  <button @click="fetchType('casual')" class="absolute bg-black text-white text-xs px-4 h-[30px] w-[90px] rounded-2xl bottom-12 left-1/2 transform -translate-x-1/2 translate-y-1/2">CASUAL</button>
+                  <button @click="fetchType('outdoor')" class="absolute hover:bg-white hover:text-black bg-black text-white text-xs px-4 h-[30px] w-[90px] rounded-2xl bottom-12 left-1/2 transform -translate-x-1/2 translate-y-1/2">OUTDOOR</button>
                 </div>
               </div>
 
-              <div class="">
+              <div>
                 <p class="font-bold text-xl my-12">FEATURED PRODUCTS</p>
                 <div class="grid grid-cols-4 grid-flow-row">
-                  <div v-for="product in products" class="mx-2.5 mb-12">
+                  <div v-for="product in products" class="mx-2.5 mb-12 shadow-lg">
                     <router-link :to="'/productDetail/'+[product.id]">
                       <img :src="product.image" alt="" class="object-cover w-[220px] h-[350px]">
                     </router-link>
-                    <div class="text-start mt-4">
-                      <p class="font-bold">{{ product.product_name }}</p>
-                      <p class="text-[#4d4d4d]">{{ product.product_type }}</p>
-                      <div class="flex justify-between w-[60%]">
-                        <p class="text-[#4d4d4d]">${{ product.price }}.00</p>
-                        <p>$57.00</p>
+                    <div class="text-start mt-4 m-2">
+                      <p class="font-semibold">{{ product.product_name }}</p>
+                      <p class="text-[#6e6e6e]">{{ product.product_type }}</p>
+                      <div class="flex justify-between">
+                        <p class="text-[#6e6e6e]">Price: </p>
+                        <p>${{ product.price }}</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <button class="mt-8 h-[40px] w-[100px] border-orange-600 border-2 rounded-3xl text-sm shadow-lg">SHOW MORE</button>
               </div>
             </div>
           </div>
@@ -192,17 +189,21 @@
       },
 
       async mounted() {
-        try{
-          const productResponse = await fetch("http://localhost:8000/api/products");
-  
-          const productData = await productResponse.json();
-          this.products = productData;
-        } catch(error) {
-          console.error("Error fetching products", error);
-        }
+        this.fetchAllProducts();
       },
 
       methods: {
+        async fetchAllProducts() {
+          try {
+            const productResponse = await fetch("http://localhost:8000/api/products");
+
+            const productData = await productResponse.json();
+            this.products = productData;
+          } catch (error) {
+            console.log("Error fetching products", error);
+          }
+        },
+
         fetchType(type) {
           axios.get('http://localhost:8000/api/products/type/'+type)
           .then(res => {

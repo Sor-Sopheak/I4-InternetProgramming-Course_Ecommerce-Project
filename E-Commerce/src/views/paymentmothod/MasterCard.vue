@@ -18,27 +18,31 @@
                     <img src="https://sm.pcmag.com/pcmag_uk/review/p/paypal/paypal_kzfp.png" class="w-[50px] h-[30px] mr-5">
                 </router-link>
             </div>
-        <div class="w-full items-center">
-            <div>
-                <label>Card number</label>
-                <input type="text" required maxlength="16" placeholder="1234 5678 9012 3456" class="w-full rounded-sm h-[35px] mb-4">
-            </div>
-            <div>
-                <p>Name on card</p>
-                <input type="text" required class="w-full h-[35px] rounded-sm mb-4" placeholder="Sor Sopheak">
-            </div>
-            <div class="flex justify-between">
-                <div class="">
-                    <p>Expiry date</p>
-                    <input type="text" required placeholder="01/08" class="w-[140px] h-[35px] mb-4 rounded-sm">
+            <form @submit.prevent="payByMasterCard">
+              <div class="w-full items-center">
+                <div>
+                    <label>Card number</label>
+                    <input v-model="card_number" type="text" required maxlength="16" placeholder="0000 0000 0000 0000" class="w-full rounded-sm h-[35px] mb-4">
                 </div>
-                <div class="">
-                    <p>CVC</p>
-                    <input type="text" required maxlength="3" placeholder="123" class="w-[140px] h-[35px] rounded-sm mb-4">
+                <div>
+                    <p>Name on card</p>
+                    <input v-model="name_on_card" type="text" required class="w-full h-[35px] rounded-sm mb-4" placeholder="Sor Sopheak">
                 </div>
-            </div>
-        </div>
-        <button type="submit" class="w-full h-[40px] bg-blue-500 rounded-md text-white mt-2 mb-8">Pay now</button>
+                <div class="flex justify-between">
+                    <div class="">
+                        <p>Expiry date</p>
+                        <input v-model="expiry_date" type="text" required placeholder="01/08" class="w-[140px] h-[35px] mb-4 rounded-sm">
+                    </div>
+                    <div class="">
+                        <p>CVC</p>
+                        <input v-model="cvc" type="text" required maxlength="3" placeholder="123" class="w-[140px] h-[35px] rounded-sm mb-4">
+                    </div>
+                    <input v-model="payment_method_id" type="text" required class="hidden">
+                </div>
+              </div>
+              <button type="submit" class="w-full h-[40px] bg-blue-500 rounded-md text-white mt-2 mb-8">Pay now</button>
+            </form>
+          
        </div>
     </div>
 </template>
@@ -48,14 +52,11 @@
   export default {
     data() {
       return {
-        cardholder: '',
-        cardNumber: '',
-        expired: {
-          month: '',
-          year: '',
-        },
-        securityCode: '',
-        card: 'front',
+        payment_method_id: 2,
+        name_on_card: '',
+        card_number: '',
+        expiry_date: '',
+        cvc: '',
       };
     },
     mounted() {
@@ -63,22 +64,22 @@
     },
     computed: {
       formattedCardNumber() {
-        if (this.cardNumber.length > 18) {
-          return this.cardNumber;
+        if (this.card_number.length > 18) {
+          return this.card_number;
         }
-        return this.cardNumber.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
+        return this.card_number.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
       },
       isValid() {
-        if (this.cardholder.length < 5) {
+        if (this.name_on_card.length < 5) {
           return false;
         }
-        if (this.cardNumber === '') {
+        if (this.card_number === '') {
           return false;
         }
-        if (this.expired.month === '' && this.expired.year === '') {
+        if (this.expiry_date === '') {
           return false;
         }
-        if (this.securityCode.length !== 3) {
+        if (this.cvc.length !== 3) {
           return false;
         }
         return true;
@@ -86,8 +87,28 @@
     },
     methods: {
       onSubmit() {
-        alert(`You did it ${this.cardholder}.`);
+        alert(`You did it ${this.name_on_card}.`);
       },
+
+      async payByMasterCard(e) {
+        e.preventDefault();
+        
+        const data = {
+          payment_method_id: this.payment_method_id,
+          name_on_card: this.name_on_card,
+          card_number: this.card_number,
+          expiry_date: this.expiry_date,
+          cvc: this.cvc,
+        };
+
+        localStorage.setItem("Payment Method", JSON.stringify(data));
+          this.payment_method_id,
+          this.name_on_card,
+          this.card_number,
+          this.expiry_date,
+          this.cvc,
+          this.$router.push({ name: 'checkout' })
+      }
     },
   };
   </script>

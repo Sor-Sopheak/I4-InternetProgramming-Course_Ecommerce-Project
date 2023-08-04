@@ -48,7 +48,9 @@
           />
           <input
             v-model="phone_number"
-            type="text"
+            @input="validNumber"
+            maxlength="10"
+            type="number"
             required
             class="block w-2/4 ml-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             placeholder="Phone number *"
@@ -131,6 +133,11 @@ export default {
   },
 
   methods: {
+    async validNumber() {
+      if(this.phone_number.length > 10) {
+        this.phone_number = this.phone_number.slice(0, 10);
+      }
+    },
     async addressShipping(e) {
       e.preventDefault();
 
