@@ -147,8 +147,8 @@
                 <p class="font-bold text-xl my-12">FEATURED PRODUCTS</p>
                 <div class="grid grid-cols-4 grid-flow-row">
                   <div v-for="product in products" class="mx-2.5 mb-12 shadow-lg">
-                    <router-link :to="'/productDetail/'+[product.id]">
-                      <img :src="'https://sopheak.tysophearum.tech'+product.image" alt="" class="object-cover w-[220px] h-[350px]">
+                    <router-link :to="'/productDetail/'+[product.id]" class="w-[220px] flex">
+                      <img :src="'https://sopheak.tysophearum.tech'+product.image" alt="" class="object-cover w-full">
                     </router-link>
                     <div class="text-start mt-4 m-2">
                       <p class="font-semibold">{{ product.product_name }}</p>

@@ -21,7 +21,7 @@
                     <img
                     :src="'https://sopheak.tysophearum.tech'+cart.product.image"
                     alt="product-image"
-                    class="w-full h-[150px] object-fit rounded-lg sm:w-40"
+                    class="max-w-full max-h-[150px] object-cover"
                     />
                     <div class="flex flex-col w-full">
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between text-center">

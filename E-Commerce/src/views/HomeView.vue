@@ -14,9 +14,9 @@
       </div>
       <div class="mt-48 m-auto w-[75%]">
         <div class=" h-[50px] border-solid border-gray-500 border-2 rounded-full flex items-center justify-between font-itim text-xl"> 
-          <div class="flex">
+          <div class="flex w-full">
             <img src="@/assets/images/search.png" alt="search icon" class="w-[30px] h-[30px] m-6">
-            <input type="text" placeholder="Search more products" class="xl:bg-transparent input-field text-xl border-none focus:border-none">
+            <input type="text" placeholder="Search more products" class="w-full xl:bg-transparent input-field text-xl border-none focus:border-none">
           </div>
           <button class=" bg-orange-600 w-[120px] h-[40px] rounded-full text-white m-2">Search</button>
         </div>
@@ -221,5 +221,14 @@ import Footer from'@/components/Footer.vue'
   .input-field:focus {
       box-shadow: none; 
   }
+
+    .input-field {
+        border: none;
+        outline: none; 
+    }
+
+    .input-field:focus {
+        box-shadow: none; 
+    }
 </style>
 

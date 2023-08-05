@@ -33,7 +33,7 @@
       return this.$route.name === 'collection';
     },
     isCategoryRoute() {
-      return this.$route.name === 'category' || this.$route.name === 'detailproduct';
+      return this.$route.name === 'category';
     },
     isAboutUsRoute() {
       return this.$route.name === 'aboutus';

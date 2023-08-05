@@ -151,15 +151,32 @@ export default {
         },
 
         checkout(){
-            const user = JSON.parse(localStorage.getItem('user'))
+            const user = JSON.parse(localStorage.getItem('user'));
+            const paymentMethod = JSON.parse(localStorage.getItem('Payment Method'));
+
+            if (!paymentMethod) {
+                alert('Please select a Payment Method before proceeding with the checkout.');
+                return; // Stop the function execution
+            }
+
             axios.delete('https://sopheak.tysophearum.tech/api/carts/clear/'+user.id, {
                 headers: {
                     Authorization: 'Bearer '+localStorage.getItem('token')
                 }
             })
             .then(res => {
-                this.$router.push('/completed')
+                this.$router.push('/completed');
+
+                for(const key in localStorage) {
+                    if(key !== 'user' && key !== 'token') {
+                        localStorage.removeItem(key);
+                    }
+                }
             })
+            .catch(error => {
+                console.error('An error occurred during checkout:', error);
+                alert('An error occurred during checkout. Please try again later.');
+            });
         },
         getCartProduct() {
             const userId = JSON.parse(localStorage.getItem('user')).id;

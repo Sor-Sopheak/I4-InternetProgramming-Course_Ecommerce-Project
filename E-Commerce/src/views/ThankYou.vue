@@ -4,9 +4,14 @@
           <div class="login-process">
               <div class="login-main-container">
                   <div class="thankyou-wrapper">
-                      <h1><img src="http://montco.happeningmag.com/wp-content/uploads/2014/11/thankyou.png" alt="thanks" /></h1>
-                        <p>for ordering, please come back again soon... </p>
-                        <RouterLink to="/">Back to home</RouterLink>
+                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vectorstock.com%2Froyalty-free-vector%2Fonline-order-purchase-completed-icon-vector-25794993&psig=AOvVaw2L-341BULr29eaDbwEwnUI&ust=1691312068470000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIDzxcqSxYADFQAAAAAdAAAAABAM" alt="">
+                      <h1>Thank You!</h1>
+                        <div>
+                          <p class="thank-success">Your order is completed</p>
+                          <p class="thank-success">Successfully</p>
+                        </div>
+                      
+                        <RouterLink to="/">Back to Store</RouterLink>
                         <div class="clr"></div>
                     </div>
                     <div class="clr"></div>
@@ -38,7 +43,18 @@ export default {
 .thankyou-wrapper h1{
   font:100px Arial, Helvetica, sans-serif;
   text-align:center;
-  color:#333333;
+  color:#f28219;
+  padding:0px 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.thankyou-wrapper .thank-success{
+  font:70px Arial, Helvetica, sans-serif;
+  display: flex;
+  text-align:center;
+  align-self: center;
+  color:#0a0a0a;
   padding:0px 10px 10px;
   display: flex;
   justify-content: center;
@@ -61,6 +77,7 @@ export default {
   margin:10px auto 0px;
   padding:15px 20px 15px;
   border-bottom:5px solid #F96700;
+  border-radius: 50px;
 }
 .thankyou-wrapper a:hover{
   font:26px Arial, Helvetica, sans-serif;

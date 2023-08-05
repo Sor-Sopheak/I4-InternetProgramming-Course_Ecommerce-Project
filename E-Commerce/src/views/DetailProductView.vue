@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="text-gray-500 text-sm flex flex-row justify-between">
-                    <div class="">
+                    <div>
                         <button  @click="isShowingSizeGuide = !isShowingSizeGuide" class="hover:underline hover:text-orange-600">
                             Open size guide
                         </button>
@@ -150,29 +150,32 @@
         <div class="w-full h-[0.5px] bg-gray-700 my-12"></div>
         <div>
             <p class="text-center">YOU MAY BE INTERESTED</p>
-            <div class="flex m-8 overflow-x-auto">
+            <div  class= "hide-scroll flex m-8 overflow-x-auto">
             <div
                 v-for="product in productList"
                 :key="product.id"
-                class="flex justify-start items-center text-sm"
+                class="flex justify-start items-center text-sm "
             >
-                <button @click="changeProduct(product.id)" class="border-2 border-gray-500 h-[210px] w-[170px] p-4 mr-8">
+                <button @click="changeProduct(product.id)" class="border-2 border-gray-500 w-[170px] p-4 mr-8 h-[15rem] flex flex-col  justify-between items-center">
                 <img
                 
                     :src="'https://sopheak.tysophearum.tech'+product.image"
                     alt=""
-                    class="w-[150px] h-[130px] object-fit"
+                    class=" max-h-[70%] max-w-full  object-cover"
                 />
-                <div class="flex justify-between mt-2">
-                    <p class="truncate long-text">{{ product.product_name }}</p>
-                    <p>${{ product.price }}</p>
-                </div>
-                <div class="flex justify-center items-center mt-2">
-                    <router-link :to="'/productDetail/'+[product.id]">
-                        <button class="bg-orange-600 rounded text-white w-[60px]">
-                            BUY
-                        </button>
-                    </router-link>
+                <div class="w-full flex flex-col  justify-between items-center">
+                    <div class="w-full flex justify-between mt-2">
+                        <p class="truncate long-text">{{ product.product_name }}</p>
+                        <p>${{ product.price }}</p>
+                    </div>
+                    <div class="flex justify-center items-center mt-2">
+                        <router-link :to="'/productDetail/'+[product.id]">
+                            <button class="bg-orange-600 rounded text-white w-[60px]">
+                                BUY
+                            </button>
+                        </router-link>
+                    </div>
+
                 </div>
                 </button>
             </div>
@@ -200,8 +203,8 @@ export default {
             selectedSize: '',
             quantity: 1,
             index: 0,
-            categories: '',
-            product: "",
+            categories: Object,
+            product: Object,
             productList: [],
             sizes: [],
             isShowingSizeGuide: false,
@@ -215,10 +218,10 @@ export default {
 
     methods: {
 
-        showProductChange() {
+        async showProductChange() {
             const id = this.currectProductId;
-            this.getProduct(id);
-            this.getCategory(id);
+            this.product = await this.getProduct(id);
+            this.getCategory(this.product.category_id);
             this.listInterestedProduct();
 
             if (this.sizes.length > 0) {
@@ -236,9 +239,8 @@ export default {
         async getProduct(id) {
             // const response = await fetch(`https://sopheak.tysophearum.tech/api/products/${this.$route.params.id}`);
             const response = await fetch(`https://sopheak.tysophearum.tech/api/products/${id}`);
-            const data = await response.json();
-            this.product = data;
-            console.log(this.product);
+            const data = await response.json();;
+            return data
         },
 
         async getCategory(id) {
@@ -258,8 +260,16 @@ export default {
         },
         
         addToCart() {
+            const user = JSON.parse(localStorage.getItem("user"));
+            const token = localStorage.getItem("token");
+            if (!user || !token) {
+                alert("Please log in first to add items to your cart.");
+                return;
+            }
+            
             axios.post("https://sopheak.tysophearum.tech/api/carts",{
-                user_id: JSON.parse(localStorage.getItem("user")).id,
+                user_id: user.id,
+                // user_id: JSON.parse(localStorage.getItem("user")).id,
                 product_id: this.$route.params.id,
                 size_id: this.$route.params.id,
                 price: this.$route.params.id,
@@ -288,18 +298,18 @@ export default {
         },
 
         change(i) {
-        this.index = i;
+            this.index = i;
         },
 
         async listSize() {
-        const res = await fetch('https://sopheak.tysophearum.tech/api/sizes', {
-            method: "GET",
-            headers: {
-            "Content-type": "application/json",
-            },
-        });
+            const res = await fetch('https://sopheak.tysophearum.tech/api/sizes', {
+                method: "GET",
+                headers: {
+                "Content-type": "application/json",
+                },
+            });
 
-        const result = await res.json();
+            const result = await res.json();
             this.sizes = await result;
             console.log(result);
         },
@@ -315,5 +325,8 @@ export default {
 
 .select-field:focus {
   box-shadow: none;
+}
+.hide-scroll::-webkit-scrollbar{
+    display: none;
 }
 </style>
