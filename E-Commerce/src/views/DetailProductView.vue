@@ -150,7 +150,7 @@
         <div class="w-full h-[0.5px] bg-gray-700 my-12"></div>
         <div>
             <p class="text-center">YOU MAY BE INTERESTED</p>
-            <div class="flex m-8">
+            <div class="flex m-8 overflow-x-auto">
             <div
                 v-for="product in productList"
                 :key="product.id"
