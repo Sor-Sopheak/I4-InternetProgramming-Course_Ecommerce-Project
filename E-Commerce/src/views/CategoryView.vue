@@ -2,7 +2,6 @@
   <div class="w-full">
     <section>
       <div>
-        <!-- grid grid-cols-[0.2fr,0.8fr] -->
         <div class="grid grid-cols-[20%,80%]">
           <div class="border-2 border-gray-300 text-start pr-12">
             <p class="font-semibold text-xl mt-5 ml-4">Category</p>

@@ -49,8 +49,6 @@
           <input
             v-model="phone_number"
             @input="validNumber"
-            maxlength="10"
-            type="number"
             required
             class="block w-2/4 ml-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             placeholder="Phone number *"
@@ -78,6 +76,8 @@
         />
         <input
           v-model="postal_code"
+          @input="validZipCode"
+          maxlength="6"
           type="text"
           class="block w-2/4 ml-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           placeholder="Zip code/ Postal code *"
@@ -134,10 +134,12 @@ export default {
 
   methods: {
     async validNumber() {
-      if(this.phone_number.length > 10) {
-        this.phone_number = this.phone_number.slice(0, 10);
-      }
+        this.phone_number = this.phone_number.replace(/\D/g, "");
     },
+    async validZipCode(){
+      this.postal_code = this.postal_code.replace(/\D/g, "");
+    },
+
     async addressShipping(e) {
       e.preventDefault();
 
